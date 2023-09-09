@@ -90,6 +90,23 @@ input[type="file"] {
   outline: none;
 }
 
+
+.boton-submit{
+  color: white !important;
+  font-family: "Klee One"!important;
+  font-size: 15px;
+  background-color:   #a2cdd3  !important;
+  border-color: #92C1D0 !important;
+  color: #292626 !important;
+  align-items: center;
+  text-transform: uppercase !important;
+}
+
+.boton-submit:hover {
+  background-color: #038091 !important;
+}
+
+
 @media (max-width: 768px) {
   .input-2 {
     width: 100%;
