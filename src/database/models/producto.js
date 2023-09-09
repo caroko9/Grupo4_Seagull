@@ -19,6 +19,10 @@ function productoData(sequelize, DataTypes) {
           type: DataTypes.BLOB,
           allowNull: false
       },
+      precio: {
+        type: DataTypes.DECIMAL(10, 2), 
+        allowNull: false
+    },
       usuario_id: {
           type: DataTypes.INTEGER,
       },
@@ -29,8 +33,7 @@ function productoData(sequelize, DataTypes) {
       },
       fecha_eliminacion: {
           type: DataTypes.DATE,
-          defaultValue: DataTypes.NOW, 
-          allowNull: false
+          allowNull: true
       },
       categoria: {
           type: DataTypes.STRING,
