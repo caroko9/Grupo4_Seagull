@@ -40,7 +40,7 @@ const productosController = {
         imagen: imagenCloudinaryURL, 
       });
       
-      res.redirect("/productos"); 
+      res.redirect("/productos/productos"); 
     } catch (error) {
       console.error(error);
       res.status(500).send(`Error al crear producto: ${error.message}`);
