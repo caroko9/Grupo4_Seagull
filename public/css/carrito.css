@@ -58,9 +58,9 @@ body {
   transform: scale(1.1);
 }
 
-.img-container {
+.img-container img {
   width: 150px;
-  height: auto;
+  height: 150px;
   margin-right: 10px;
   display: flex;
   align-items: center;

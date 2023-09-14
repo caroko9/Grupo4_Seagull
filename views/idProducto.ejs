@@ -17,13 +17,12 @@
   <div class="container text-center">
     <h1 class="titulo">DETALLE DEL PRODUCTO SELECCIONADO</h1>
   </div>
-    <div class="row g-2">
-      
-      <div class="col-6">
-        <div class="p-3 no-border text-center">
-          <img src="<%= productoSeleccionado.imagen %>">
-        </div>
+  <div class="row g-2">
+    <div class="col-6">
+      <div class="imagen-producto">
+        <img src="<%= productoSeleccionado.imagen %>">
       </div>
+    </div>
 
     <div class="col-6">
       <div class="p-3 no-border">
@@ -60,7 +59,7 @@
         <div class="boton de compra text-center">
           <form action="/productos/carrito" method="POST">
             <input type="hidden" name="productoId" value="<%= productoSeleccionado.id %>">
-            <button type="submit" class="btn btn-color" id="Miboton">AGREGAR AL CARRITO</button>
+            <button type="submit" class="btn btn-color" id="Miboton" onclick="">AGREGAR AL CARRITO</button>
           </form>
         </div>        
 
@@ -69,6 +68,10 @@
   </div>
 
   <% } %>
+
+  <script src="../../public/js/carrito.js"></script>
+
+
 
 </body>
 </html>

@@ -41,9 +41,11 @@
         <div class="contenedor-iconos">
         </div>        
       </div>
-      <form action="/productos/carrito/<%=producto.id%>?_method=DELETE" method="POST" >
+      <form action="/productos/carrito/<%= producto.id %>?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
         <input type="submit" class="Boton_borrar" value="ELIMINAR PRODUCTO">
       </form>
+      
     <% }); %>
   </section>
   <div class="precio-total">
@@ -54,6 +56,10 @@
   <div class="boton text-center"> 
     <a class="btn btn-color" id="Miboton" href="/productos/carrito">PAGAR</a>
   </div>
+ 
+  <script src="../../public/js/carrito.js"></script>
+
+
   <script>
     $(document).ready(function() {
       $('.dropdown-toggle').on('click', function() {

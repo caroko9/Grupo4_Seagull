@@ -81,3 +81,8 @@ h4{
   text-transform: uppercase;
 }
 
+.imagen-producto img {
+  height: 570px;
+  width: 550px;
+  margin-left: 50px;
+}

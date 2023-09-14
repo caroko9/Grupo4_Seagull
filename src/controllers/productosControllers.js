@@ -1,5 +1,12 @@
+// Asumiendo que tu controlador está en el mismo nivel que la carpeta public
+const carritoFunciones  = require('../../public/js/carrito');
+
+
 const db = require('../database/models'); 
+
 const { producto } = require('../database/models');
+
+
 
 const productosController = {
 
@@ -65,49 +72,66 @@ const productosController = {
     }
   },
 
-  comprar: async (req, res) => {
-    try {
-      const productoId = req.body.productoId;
-      const productoSeleccionado = await db.Producto.findByPk(productoId);
-      
-      if (!productoSeleccionado) {
-        return res.status(404).send("Producto no encontrado");
-      }
-      
-      const productoEnCarrito = {
-        id: productoSeleccionado.id,
-        nombre: productoSeleccionado.nombre,
-        precio: productoSeleccionado.precio,
-        imagen: productoSeleccionado.imagen
-      };
-      
-      carrito.push(productoEnCarrito); 
-      
-      res.render('carrito', { carrito });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error al agregar el producto al carrito');
+
+     // Agregar producto al carrito en el servidor
+     // Agregar producto al carrito en el servidor
+comprar: async (req, res) => {
+  try {
+    const productoId = req.body.productoId;
+    const productoSeleccionado = await db.producto.findByPk(productoId);
+
+    if (!productoSeleccionado) {
+      return res.status(404).send("Producto no encontrado");
     }
-  },
-  
+
+    const productoEnCarrito = {
+      id: productoSeleccionado.id,
+      nombre: productoSeleccionado.nombre,
+      precio: productoSeleccionado.precio,
+      imagen: productoSeleccionado.imagen
+    };
+
+    // Agregar el producto al carrito en localStorage
+    carritoFunciones.agregarProductoAlCarrito(productoEnCarrito);
+
+    // Obtener el carrito actualizado desde localStorage
+    const carrito = carritoFunciones.obtenerCarrito();
+
+    res.render('carrito', { carrito });
+  } catch (error) {
+    console.error(error); // Agregamos esta línea para imprimir el error en la consola
+    res.status(500).send('Error al agregar el producto al carrito');
+  }
+},
+
+    
+
   vistaCarrito: (req, res) => {
-    res.render("carrito");
-    res.render('carrito', { carrito: carrito }); 
+   
+    res.render('carrito', { carrito });
   },
-  
-  deleteCarrito: async (req, res) => {
+
+  deleteCarrito: (req, res) => {
     try {
       const productoId = req.params.id;
-      carrito = carrito.filter((producto) => producto.id !== productoId); 
-      
-      fs.writeFileSync(carritoFilePath, JSON.stringify(carrito), 'utf-8');
-      
-      res.render('carrito', { carrito: carrito });
+  
+      // Eliminar el producto del carrito en localStorage
+      carritoFunciones.eliminarProductoDelCarrito(productoId);
+  
+      // Obtener el carrito actualizado desde localStorage
+      const carrito = obtenerCarritoDesdeLocalStorage();
+  
+      // Redirigir al usuario de vuelta a la vista del carrito
+      res.render('carrito', { carrito });
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al eliminar el producto del carrito');
     }
   },
+  
+  
+  
 };
 
 module.exports = productosController;
+
