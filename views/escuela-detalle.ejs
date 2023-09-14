@@ -6,7 +6,8 @@
 
        <body>
         <%- include ('partials/header.ejs') %>
-        
+        <br>
+        <br>
             <main>
                 <div class="containerName">
                     <h1 class="nombreProd"> <%= escuela.nombre %></h1>                  
@@ -49,6 +50,15 @@
       
               
        </main>
-       
+       <script>
+        $(document).ready(function() {
+          $('.dropdown-toggle').on('click', function() {
+            // Cierra todos los menús desplegables
+            $('.dropdown-menu').removeClass('show');
+            // Abre el menú desplegable asociado al botón que se hizo clic
+            $(this).next('.dropdown-menu').toggleClass('show');
+          });
+        });
+      </script>
     </body>
 </html>
