@@ -10,7 +10,7 @@ body {
 h1{
     font-family: "Klee One";
     color: #137DB0 !important;
-    font-size: 90px !important;
+    font-size: 50px;
     text-transform: uppercase;
     margin-left: 20px !important;
 }
@@ -36,8 +36,16 @@ p{
   .rightColumn {
     float: right;
     width: 50%;
+    
   }
-  
+  .rightColumn .containerImagen {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
   .container {
     margin-left: 20px !important;
     margin-bottom: 20px;
@@ -49,6 +57,9 @@ p{
     align-items: center;
     padding: 10px;
     width: 100%;
+  }
+  .containerName{
+    font-size: 30px;
   }
   
 
@@ -63,7 +74,7 @@ p{
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     z-index: 1;
   }
   
@@ -84,28 +95,33 @@ p{
     left: -15px;
     right: -15px;
     bottom: -15px;
-    background-image: url("/img/escuelas/bordePolaroid.png");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
     position: relative;
     z-index: 2;
   }
-  .contenedor_boton{
-  display: flex;
-  }
+
 .Boton_editar{
   background-color: rgba(255, 255, 255, 0.466);
   border: 5px solid #afe3f5a6;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   margin-top: 20px;
   margin-left: 180px;
   width: 400px;
   height: 70px;
   font-family: "Klee One";
+  text-decoration: none;
   color: #165A7A !important;
   font-size: 20px !important;
+}
+.rightColumn .containerImagen .imagenbd {
+  justify-content: center;
+  align-items: center;
 }
   
 

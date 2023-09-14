@@ -26,25 +26,27 @@
                   <h2>Ubicación</h2>
                   <p><%= escuela.ubicacion %></p>
                 </div>
+
+              <div class="contenedor_boton">
+                <a href="/escuelas/editarEscuela/<%= escuela.id %>" class="Boton_editar">EDITAR ESCUELA</a>
+              </div>
                 
               </div>
 
        <!--boton para editar para los administradores-->
 
-              <div class="contenedor_boton">
-                <a href="/escuelas/editarEscuela/<%= escuela.id %>" class="Boton_editar">EDITAR ESCUELA</a>
-              </div>
 
 
-              <div class="rightColumn">
-                <div class="containerImagen">
-                  <img src="\img\escuelas\bordePolaroid.png" alt="Imagen polaroid">
-                  <!-- se crea un if para que tome las fotos subidas en el array dentro el JSON-->
-                  <% if (escuela.imagen && escuela.imagen.length > 0) { %>
-                  <img class= "imagenjson" src="/img/escuelas/<%= escuela.imagen[0].filename %>" alt="Imagen de la escuela">
-                  <% } %>
-                </div>
-              </div>    
+       <div class="rightColumn">
+        <div class="containerImagen">
+          <img src="\img\escuelas\bordePolaroid.png" alt="Imagen polaroid">
+          <!-- Verifica si hay una imagen en el objeto 'escuela' y la muestra si existe -->
+          <% if (escuela.imagen) { %>
+            <img class="imagenbd" src="<%= escuela.imagen %>" alt="Imagen de la escuela">
+          <% } %>
+        </div>
+      </div>
+      
               
        </main>
        

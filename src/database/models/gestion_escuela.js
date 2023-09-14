@@ -22,11 +22,10 @@ function gestion_escuela_Data(sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'gestion_escuela', // Especifica el nombre de la tabla existente
+        tableName: 'gestion_escuela', 
         timestamps: false,
     });
 
-    // Definir relaciones
     GestionEscuela.associate = function (models) {
         GestionEscuela.belongsTo(models.escuela, {
             as: 'escuelas',
