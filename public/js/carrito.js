@@ -4,10 +4,20 @@ function obtenerCarritoDesdeLocalStorage() {
 }
 
 function agregarProductoAlCarrito(producto) {
-  const carrito = obtenerCarritoDesdeLocalStorage();
-  carrito.push(producto);
-  localStorage.setItem('carrito', JSON.stringify(carrito));
+  if (typeof localStorage !== 'undefined') {
+    try {
+      const carrito = obtenerCarritoDesdeLocalStorage();
+      carrito.push(producto);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    } catch (error) {
+      console.error('Error al guardar en localStorage:', error);
+    }
+  } else {
+    console.error('localStorage no está disponible en este navegador.');
+  }
 }
+
+
 
 function eliminarProductoDelCarrito(productoId) {
   const carrito = obtenerCarritoDesdeLocalStorage();

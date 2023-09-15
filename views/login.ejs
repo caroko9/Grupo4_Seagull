@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include ('partials/head.ejs') %>
-<link href="/css/login.css" rel="stylesheet">
+<head>
+    <%- include ('partials/head.ejs') %>
+    <link href="/css/login.css" rel="stylesheet">
+</head>
 <body>
     <%- include ('partials/header.ejs') %>
     <main>
@@ -12,8 +14,8 @@
                     <h1 class="iniciosesion">INICIO DE SESION</h1>
                     <p>¡Bienvenido otra vez surfer, te extrañamos!</p>
                     <div class="completar">
-                        <input type="email" placeholder="  e-mail" name="email" class="input">
-                        <input type="password" placeholder="  contraseña" name="contrasena" class="input">
+                        <input type="email" placeholder="e-mail" name="email" class="input">
+                        <input type="password" placeholder="contraseña" name="contrasena" class="input">
                     </div>
                     <!-- Mostrar errores de validación -->
                     <% if (locals.errors) { %>
@@ -23,14 +25,12 @@
                             <% } %>
                         </div>
                     <% } %>
-                    <a class="TextoOlvido">¡Ups! No recuerdo mi contraseña. </a>
+                    <a class="TextoOlvido">¡Ups! No recuerdo mi contraseña.</a>
                     <br>
                     <a href="/users/register" class="TextoCreaCuenta">CREA TU CUENTA</a>
                     <br>
-                    <div>
-                        <div class="boton text-center">
-                            <button type="submit" class="btn btn-color">INICIAR SESION</button>
-                        </div>
+                    <div class="boton text-center">
+                        <button type="submit" class="btn btn-color">INICIAR SESION</button>
                     </div>
                 </form>
             </div>
@@ -38,14 +38,14 @@
     </main>
     <%- include ('partials/footer.ejs') %>
     <script>
-        $(document).ready(function() {
-          $('.dropdown-toggle').on('click', function() {
-            // Cierra todos los menús desplegables
-            $('.dropdown-menu').removeClass('show');
-            // Abre el menú desplegable asociado al botón que se hizo clic
-            $(this).next('.dropdown-menu').toggleClass('show');
-          });
+        $(document).ready(function () {
+            $('.dropdown-toggle').on('click', function () {
+                // Cierra todos los menús desplegables
+                $('.dropdown-menu').removeClass('show');
+                // Abre el menú desplegable asociado al botón que se hizo clic
+                $(this).next('.dropdown-menu').toggleClass('show');
+            });
         });
-      </script>
+    </script>
 </body>
 </html>
