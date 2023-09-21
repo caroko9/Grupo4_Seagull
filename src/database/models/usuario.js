@@ -14,22 +14,19 @@ function usuarioData(sequelize, DataTypes) {
             type: DataTypes.STRING(40),
             allowNull: false
         },
-        clave: {
+        contrasena: {
             type: DataTypes.STRING(40),
             allowNull: false
         },
         fecha_creacion: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: true
         },
         fecha_eliminacion: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: true
         },
-        categoria: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+   
     }
 
     let configUsuario = {

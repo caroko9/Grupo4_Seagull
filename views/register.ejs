@@ -41,7 +41,7 @@
                             <%= errors.mail.msg %>
                             </div>
                             <% } %>
-                        <input name="contrasena" type="password" placeholder="Contraseña" class="nombre">
+                        <input name="contrasena" type="password" placeholder="contraseña" class="nombre">
                         <!-- Para mostrar msjs de errores en el formulario-->
                         <% if ( locals.errors && errors.contrasena) { %>
                             <div class="text-error" >
@@ -49,12 +49,6 @@
                             </div>
                             <% } %>
 
-                        <input name="repetir_contrasena" type="password" placeholder="Repetir contraseña" class="nombre">
-                        <% if ( locals.errors && errors.repetir_contrasena) { %>
-                            <div class="text-error" >
-                            <%= errors.repetir_contrasena.msg %>
-                            </div>
-                            <% } %>
 
                         <input name="telefono" type="tel" placeholder="Teléfono" class="nombre"
                         value="<%= locals.oldData ? oldData.telefono : null %>">
@@ -64,13 +58,7 @@
                             </div>
                             <% } %>
 
-                        <label>Carga una foto de perfil</label>
-                        <input name="imagenPerfil" type="file" placeholder="usuarioimg" value="REGISTRARME" class="nombre">
-                        <% if ( locals.errors && errors.imagenPerfil) { %>
-                            <div class="text-error" >
-                            <%= errors.imagenPerfil.msg %>
-                            </div>
-                            <% } %>
+                      
                     
                     </div>
                     <div class="boton text-center">
