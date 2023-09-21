@@ -17,10 +17,19 @@ const validations = [
     body('telefono').notEmpty().withMessage('Tienes que ingresar tu teléfono'),
     body('imagenPerfil').custom((value, { req }) => {
         let file = req.file;
-        if(!file) {
-           throw new Error('Tienes que subir una imagen');}
-           return true;
-    }),
+		let acceptedExtensions = ['.jpg', '.png', '.gif'];
+		
+		if (!file) {
+			throw new Error('Tienes que subir una imagen');
+		} else {
+			let fileExtension = path.extname(file.originalname);
+			if (!acceptedExtensions.includes(fileExtension)) {
+				throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}`);
+			}
+		}
+
+		return true;
+	}),
     ]
 
 let usermulterDiskStorage = multer.diskStorage({

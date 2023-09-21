@@ -71,7 +71,10 @@ const productosController = {
       res.status(500).send('Error al obtener los detalles del producto');
     }
   },
-
+    vistaCarrito: (req, res) => {
+   
+    res.render('carrito', { carrito });
+  },  
 
      // Agregar producto al carrito en el servidor
      // Agregar producto al carrito en el servidor
@@ -106,10 +109,7 @@ comprar: async (req, res) => {
 
     
 
-  vistaCarrito: (req, res) => {
-   
-    res.render('carrito', { carrito });
-  },
+  
 
   deleteCarrito: (req, res) => {
     try {
