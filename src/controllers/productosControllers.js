@@ -71,10 +71,13 @@ const productosController = {
       res.status(500).send('Error al obtener los detalles del producto');
     }
   },
-    vistaCarrito: (req, res) => {
-   
-    res.render('carrito', { carrito });
-  },  
+  vistaCarrito: (req, res) => {
+    // Supongamos que el carrito es un array de objetos con detalles de productos
+    const carrito = [];
+
+    const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+    res.render('carrito', { carrito, total });
+},
 
      // Agregar producto al carrito en el servidor
      // Agregar producto al carrito en el servidor

@@ -11,17 +11,21 @@ const controladorUsuario = {
     try {
       const userId = req.params.userId;
       const usuario = await db.usuario.findByPk(userId);
-
+  
       if (!usuario) {
         return res.status(404).send('Usuario no encontrado');
       }
-
+  
+      // Agregar un console.log para mostrar el usuario encontrado
+      console.log('Usuario encontrado:', usuario);
+  
       res.render('perfil', { usuario: usuario });
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al obtener el usuario');
     }
   },
+  
 
   iniciarSesion: (req, res) => {
     res.render("login");
@@ -91,14 +95,12 @@ const controladorUsuario = {
 
       const { nombre, email, contrasena, telefono } = req.body;
       const hashedPassword = bcrypt.hashSync(contrasena, 10);
-      let imgperfilUpload = req.file.filename;
 
       await db.usuario.create({
         nombre: nombre,
         email: email,
         contrasena: hashedPassword,
-        telefono: telefono,
-        imagenPerfil: imgperfilUpload,
+        telefono: telefono
       });
 
       res.redirect('/');
