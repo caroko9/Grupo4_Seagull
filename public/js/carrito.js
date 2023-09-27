@@ -2,6 +2,9 @@ function obtenerCarritoDesdeLocalStorage() {
   const carritoJSON = localStorage.getItem('carrito');
   return carritoJSON ? JSON.parse(carritoJSON) : [];
 }
+function guardarCarritoEnLocalStorage(carrito) {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
 
 function agregarProductoAlCarrito(producto) {
   if (typeof localStorage !== 'undefined') {
@@ -24,13 +27,11 @@ function eliminarProductoDelCarrito(productoId) {
   const carritoActualizado = carrito.filter((producto) => producto.id !== productoId);
   localStorage.setItem('carrito', JSON.stringify(carritoActualizado));
 }
+  const actualizarProductoDeCarrito = obtenerCarritoDesdeLocalStorage
+
 
 function obtenerCarrito() {
   return obtenerCarritoDesdeLocalStorage();
 }
 
-module.exports = {
-  agregarProductoAlCarrito,
-  eliminarProductoDelCarrito,
-  obtenerCarrito,
-};
+console.log(actualizarProductoDeCarrito);

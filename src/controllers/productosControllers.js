@@ -69,18 +69,17 @@ const productosController = {
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al obtener los detalles del producto');
+
+      
     }
   },
   vistaCarrito: (req, res) => {
-    // Supongamos que el carrito es un array de objetos con detalles de productos
-    const carrito = [];
+    const carrito = []; // Inicializa el carrito como una matriz vacía
+    res.render('carrito', { carrito });
+  },
+  
 
-    const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-    res.render('carrito', { carrito, total });
-},
-
-     // Agregar producto al carrito en el servidor
-     // Agregar producto al carrito en el servidor
+   
 comprar: async (req, res) => {
   try {
     const productoId = req.body.productoId;
@@ -89,7 +88,7 @@ comprar: async (req, res) => {
     if (!productoSeleccionado) {
       return res.status(404).send("Producto no encontrado");
     }
-
+    const carrito = [];
     const productoEnCarrito = {
       id: productoSeleccionado.id,
       nombre: productoSeleccionado.nombre,
@@ -97,18 +96,15 @@ comprar: async (req, res) => {
       imagen: productoSeleccionado.imagen
     };
 
-    // Agregar el producto al carrito en localStorage
-    carritoFunciones.agregarProductoAlCarrito(productoEnCarrito);
+    carrito.push(productoEnCarrito);
 
-    // Obtener el carrito actualizado desde localStorage
-    const carrito = carritoFunciones.obtenerCarrito();
-
-    res.render('carrito', { carrito });
+    res.render('carrito', { carrito }); // Renderiza la vista de carrito con el carrito actualizado
   } catch (error) {
     console.error(error); // Agregamos esta línea para imprimir el error en la consola
     res.status(500).send('Error al agregar el producto al carrito');
   }
 },
+
 
     
 
@@ -118,11 +114,9 @@ comprar: async (req, res) => {
     try {
       const productoId = req.params.id;
   
-      // Eliminar el producto del carrito en localStorage
-      carritoFunciones.eliminarProductoDelCarrito(productoId);
-  
-      // Obtener el carrito actualizado desde localStorage
-      const carrito = obtenerCarritoDesdeLocalStorage();
+      const carrito = [productoEnCarrito];
+     
+      
   
       // Redirigir al usuario de vuelta a la vista del carrito
       res.render('carrito', { carrito });

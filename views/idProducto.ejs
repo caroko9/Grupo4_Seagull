@@ -59,7 +59,7 @@
         <div class="boton de compra text-center">
           <form action="/productos/carrito" method="POST">
             <input type="hidden" name="productoId" value="<%= productoSeleccionado.id %>">
-            <button type="submit" class="btn btn-color" id="Miboton" onclick="">AGREGAR AL CARRITO</button>
+            <button id="agregarAlCarritoButton" class="btn btn-color" onclick="('<%= productoSeleccionado.id %>')">Agregar al Carrito</button>
           </form>
         </div>        
 
@@ -69,9 +69,19 @@
 
   <% } %>
 
-  <script src="../../public/js/carrito.js"></script>
+  <script src="/js/carrito.js"></script>  
 
-
+  <script>
+    $(document).ready(function() {
+      $('.dropdown-toggle').on('click', function() {
+        // Cierra todos los menús desplegables
+        $('.dropdown-menu').removeClass('show');
+        // Abre el menú desplegable asociado al botón que se hizo clic
+        $(this).next('.dropdown-menu').toggleClass('show');
+      });
+    });
+  </script>
+  
 
 </body>
 </html>
