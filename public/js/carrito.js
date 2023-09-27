@@ -1,37 +1,26 @@
-function obtenerCarritoDesdeLocalStorage() {
-  const carritoJSON = localStorage.getItem('carrito');
-  return carritoJSON ? JSON.parse(carritoJSON) : [];
-}
-function guardarCarritoEnLocalStorage(carrito) {
+// carrito.js
+
+// Función para agregar un producto al carrito
+function agregarAlCarrito(producto) {
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  carrito.push(producto);
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-function agregarProductoAlCarrito(producto) {
-  if (typeof localStorage !== 'undefined') {
-    try {
-      const carrito = obtenerCarritoDesdeLocalStorage();
-      carrito.push(producto);
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-    } catch (error) {
-      console.error('Error al guardar en localStorage:', error);
-    }
-  } else {
-    console.error('localStorage no está disponible en este navegador.');
-  }
+// Función para eliminar un producto del carrito por su índice
+function eliminarDelCarrito(index) {
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  carrito.splice(index, 1);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-
-
-function eliminarProductoDelCarrito(productoId) {
-  const carrito = obtenerCarritoDesdeLocalStorage();
-  const carritoActualizado = carrito.filter((producto) => producto.id !== productoId);
-  localStorage.setItem('carrito', JSON.stringify(carritoActualizado));
-}
-  const actualizarProductoDeCarrito = obtenerCarritoDesdeLocalStorage
-
-
-function obtenerCarrito() {
-  return obtenerCarritoDesdeLocalStorage();
+// Función para inicializar el carrito en la vista
+function inicializarCarrito() {
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  // Renderizar la lista de productos en el carrito aquí
+  // Puedes usar un bucle para recorrer 'carrito' y crear elementos HTML
+  // para cada producto en la vista del carrito.
 }
 
-console.log(actualizarProductoDeCarrito);
+// Ejecutar la función de inicialización cuando la página se carga completamente
+window.addEventListener('load', inicializarCarrito);
