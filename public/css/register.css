@@ -70,6 +70,10 @@ p{
   border: 24px solid rgba(31, 99, 121, 0.5); 
 }
 
+.errores{
+color: rgba(255, 0, 0, 0.692);
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -103,7 +107,36 @@ p{
   background-color: transparent;
   border: #a2cdd3 solid 2px ;
 }
-
+.email {
+  margin-left: 2vw;
+  padding: 12px;
+  width: 250px;
+  margin-bottom: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+  background-color: transparent;
+  border: #a2cdd3 solid 2px ;
+}
+.contrasena{
+  margin-left: 2vw;
+  padding: 12px;
+  width: 250px;
+  margin-bottom: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+  background-color: transparent;
+  border: #a2cdd3 solid 2px ;
+}
+.telefono{
+  margin-left: 2vw;
+  padding: 12px;
+  width: 250px;
+  margin-bottom: 20px;
+  margin-top: 6px;
+  border-radius: 3px;
+  background-color: transparent;
+  border: #a2cdd3 solid 2px ;
+}
 .btn {
   color: white;
   font-family: "Klee One" !important;

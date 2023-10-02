@@ -10,10 +10,11 @@ const guestMiddleWare = require('../../middleware/guestMiddleWare');
 
 //middleware que se usa en la ruta POST de register
 const validations = [
-    body('nombre').notEmpty().withMessage('Tienes que ingresar tu nombre'),
+    /* body('telefono').notEmpty().withMessage('Tienes que ingresar tu teléfono'),
+    body('nombre').notEmpty().withMessage('Tienes que ingresar tu nombre'),*/
     body('email').notEmpty().withMessage('Tienes que ingresar tu email'),
     body('contrasena').notEmpty().withMessage('Tienes que ingresar una contraseña'),
-    body('telefono').notEmpty().withMessage('Tienes que ingresar tu teléfono'),
+   
 ]
 
 let usermulterDiskStorage = multer.diskStorage({
@@ -32,16 +33,13 @@ let usuarioimgUpload = multer({ storage : usermulterDiskStorage });
 
 router.get('/register', guestMiddleWare, controladorUsers.register);
 
-router.post('/register', usuarioimgUpload.single('imagenPerfil'), validations, controladorUsers.create);
+router.post('/register', usuarioimgUpload.single('imagenPerfil'),  controladorUsers.create);
 
 router.get('/login', guestMiddleWare, controladorUsers.iniciarSesion);
 
 router.get('/homeAdmin', controladorUsers.homeAdministration);
 
-router.post('/login', guestMiddleWare , [
-    check('email').isEmail().withMessage('Email invalido'),
-    check('contrasena').isLength({min: 8}).withMessage('la contraseña tiene que tener minimo 8 caracteres')
-], controladorUsers.processLogin);  
+router.post('/login', guestMiddleWare ,validations, controladorUsers.processLogin);  
 
 router.get('/perfil/:userId', controladorUsers.obtenerUsuario);
 

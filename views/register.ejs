@@ -19,6 +19,9 @@
                         <% } %>
 
             <div class="div_form">
+                <div class="errores">
+                    <ul></ul>
+                </div>
                 <form  method="POST" action="/users/register" enctype="multipart/form-data" class="formulario" name="formularioUsuario">
 
                     <P> Regístrate y serás parte de la familia Seagull</P>
@@ -33,7 +36,7 @@
                             </div>
                             <% } %>
 
-                        <input name="email" type="email" placeholder="E-mail" class="nombre"
+                        <input name="email" type="email" placeholder="E-mail" class="email"
                         value="<%= locals.oldData ? oldData.email : null %>">
                          <!-- Para mostrar msjs de errores en el formulario-->
                          <% if ( locals.errors && errors.mail) { %>
@@ -41,7 +44,7 @@
                             <%= errors.mail.msg %>
                             </div>
                             <% } %>
-                        <input name="contrasena" type="password" placeholder="contraseña" class="nombre">
+                        <input name="contrasena" type="password" placeholder="contraseña" class="contrasena">
                         <!-- Para mostrar msjs de errores en el formulario-->
                         <% if ( locals.errors && errors.contrasena) { %>
                             <div class="text-error" >
@@ -50,7 +53,7 @@
                             <% } %>
 
 
-                        <input name="telefono" type="tel" placeholder="Teléfono" class="nombre"
+                        <input name="telefono" type="tel" placeholder="Teléfono" class="telefono"
                         value="<%= locals.oldData ? oldData.telefono : null %>">
                         <% if ( locals.errors && errors.telefono) { %>
                             <div class="text-error" >
@@ -79,5 +82,6 @@
           });
         });
       </script>
+      <script src="/js/validaciones.js"></script>
 </body>
 </html>
