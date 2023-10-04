@@ -33,8 +33,6 @@ router.get('/idProducto/:id', productosController.idProducto);
 
 router.get('/carrito', productosController.vistaCarrito);
 
-router.post('/carrito', productosController.comprar);
-
 router.delete('/carrito/:id', productosController.deleteCarrito);
 
 

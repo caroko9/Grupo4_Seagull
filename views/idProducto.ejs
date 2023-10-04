@@ -57,10 +57,9 @@
         <hr>
 
         <div class="boton de compra text-center">
-          <form action="/productos/carrito" method="POST">
-            <input type="hidden" name="productoId" value="<%= productoSeleccionado.id %>">
-            <button id="agregarAlCarritoButton" class="btn btn-color" onclick="agregarProductoAlCarrito('<%= JSON.stringify(productoSeleccionado) %>')">Agregar al Carrito</button>
-          </form>
+         
+            <button id="agregarAlCarritoButton" class="btn btn-color" onclick="">Agregar al Carrito</button>
+      
         </div>        
 
       </div>
@@ -81,15 +80,8 @@
       });
     });
   </script>
-<script src="/js/carrito.js"></script>
-<script>
-  inicializarCarrito();
 
-  function eliminarProductoDelCarrito(index) {
-    eliminarDelCarrito(index);
-    location.reload();
-  }
-</script>
+<script src="/js/carritoEnSession.js"></script>
 
 </body>
 </html>

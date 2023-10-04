@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
         let campoNombre = document.querySelector("input.nombre");
         if (campoNombre.value == "") {
             event.preventDefault(); // Evitar el envío del formulario
-            ulErrores.innerHTML += "<li>El campo de Nombre Completo tiene que estar completo</li>";
+            ulErrores.innerHTML += "<li> Debes completar este campo </li>";
         } else if (campoNombre.value.length < 2) {
             event.preventDefault(); // Evitar el envío del formulario
             ulErrores.innerHTML += "<li>El campo de Nombre Completo debe tener al menos 2 caracteres</li>";
@@ -20,7 +20,7 @@ window.addEventListener("load", function () {
         let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; 
         if (campoEmail.value == "") {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li>El campo de email tiene que estar completo</li>";
+            ulErrores.innerHTML += "<li> Debe completar el campo Email </li>";
         } else if (!emailPattern.test(campoEmail.value)) {
             event.preventDefault(); 
             ulErrores.innerHTML += "<li>El campo Email no tiene un formato válido</li>";

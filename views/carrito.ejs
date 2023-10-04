@@ -11,42 +11,8 @@
   <%- include ('./partials/header.ejs') %> 
 
   <h1 class="titulo">CARRITO DE COMPRA</h1>
-  <section class="contenedor">
-    <% carrito.forEach(function (producto) { %>
-      <div class="contenedor-items">
-        <div class="item-1">
-          <div class="item-contenedor">
-            <div class="img-container">
-              <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
-            </div>
-            <div class="texto-contenedor">
-              <h2 class="nombreProd"><%= producto.nombre %></h2> 
-              <h3>Resumen del pedido</h3>
-              <div class="texto-bajo">
-                <div class="texto-izquierda">
-                  <span>Productos (1 item)</span>
-                  <span>Descuentos</span>
-                  <span>Envio</span>
-                </div>
-                <div class="texto-derecha">
-                  <span><%= producto.precio %> ARS</span> 
-                  <span>0</span>
-                  <span>Gratis</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="espaciador"></div>
-        <div class="contenedor-iconos">
-        </div>        
-      </div>
-      <form action="/productos/carrito/<%= producto.id %>?_method=DELETE" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="Boton_borrar" value="ELIMINAR PRODUCTO">
-      </form>
-      
-    <% }); %>
+  <section id="carrito">
+    
   </section>
   <div class="precio-total">
     <p>TOTAL</p>
@@ -68,6 +34,7 @@
       });
     });
   </script>
+<script src="/js/carrito.js"></script>
 </body>
 </html>
 

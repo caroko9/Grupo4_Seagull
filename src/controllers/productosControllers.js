@@ -70,51 +70,17 @@ const productosController = {
     }
   },
   vistaCarrito: (req, res) => {
-    const carrito = []; // Inicializa el carrito como una matriz vacía
-    res.render('carrito', { carrito });
+    res.render('carrito');
   },
   
-
-   
-comprar: async (req, res) => {
-  try {
-    const productoId = req.body.productoId;
-    const productoSeleccionado = await db.producto.findByPk(productoId);
-
-    if (!productoSeleccionado) {
-      return res.status(404).send("Producto no encontrado");
-    }
-    const carrito = [];
-    const productoEnCarrito = {
-      id: productoSeleccionado.id,
-      nombre: productoSeleccionado.nombre,
-      precio: productoSeleccionado.precio,
-      imagen: productoSeleccionado.imagen
-    };
-
-    carrito.push(productoEnCarrito);
-
-    res.render('carrito', { carrito }); // Renderiza la vista de carrito con el carrito actualizado
-  } catch (error) {
-    console.error(error); // Agregamos esta línea para imprimir el error en la consola
-    res.status(500).send('Error al agregar el producto al carrito');
-  }
-},
-
-
-    
-
   
-
   deleteCarrito: (req, res) => {
+
     try {
       const productoId = req.params.id;
   
       const carrito = [productoEnCarrito];
      
-      
-  
-      // Redirigir al usuario de vuelta a la vista del carrito
       res.render('carrito', { carrito });
     } catch (error) {
       console.error(error);
