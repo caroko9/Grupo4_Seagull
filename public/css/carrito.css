@@ -28,139 +28,28 @@ body {
   text-decoration: underline;
 }
 
-.contenedor {
+/* Estilos para los productos en el carrito */
+.producto-en-carrito {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: -180px;
-  padding-top: 20px;
-  position: relative;
-  height: calc(100vh - 180px);
-  display: grid;
-  overflow: auto;
-}
-
-.item-contenedor {
-  background-color: rgba(255, 255, 255, 0.726);
-  border: 3px solid #92C1D0;
-  padding: 10px;
-  width: 40vw;
-  display: flex;
-  border-radius: 7px;
-  height: 180px;
-  transition: transform 0.3s ease;
+  flex-direction: column; /* Aplicar Flexbox en dirección de columna */
+  align-items: center; /* Centrar horizontalmente */
+  text-align: center; /* Alinear el texto al centro */
   margin-bottom: 20px;
-  margin-top: 40px;
 }
 
-.item-contenedor:hover {
-  transform: scale(1.1);
-}
-
-.img-container img {
-  width: 150px;
-  height: 150px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.img-item {
-  width: 80%;
-  height: auto;
-  margin-left: 7%;
-}
-
-.texto-contenedor {
-  display: flex;
-  flex-direction: column;
-  color: rgb(17, 15, 15);
-  margin-top: 0%;
-}
-
-.texto-bajo {
-  display: flex;
-  flex-direction: row;
-  font-size: 12px;
-  font-family: 'Roboto Mono' !important;
-}
-
-.texto-bajo .texto-izquierda {
-  display: flex;
-  flex-direction: column;
-  margin-right: 2vw;
-  margin-top: -2px;
-}
-
-.texto-bajo .texto-derecha {
-  display: flex;
-  flex-direction: column;
-  margin-left: 8vw;
-  margin-top: -2px;
-}
-
-.nombreProd {
-  color: #165A7A;
-  font-family: 'Klee One';
-  font-size: 20px !important;
-  text-align: left;
-  font-weight: bold;
-}
-
-.espaciador {
-  margin-top: 20px;
-}
-
-.contenedor_iconos {
-  display: flex;
-  justify-content: end;
-}
-
-.iconos {
-  color: black;
-  width: 40px;
-  height: 40px;
-}
-
-.precio-total {
-  color: #5F6368;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-right: 10%;
-  margin-left: 10%;
-  border-top: 1px solid rgba(176, 222, 228, 0.40);
-  border-bottom: 1px solid rgba(176, 222, 228, 0.40);
-  font-family: 'Roboto Mono';
-}
-
-
-.contenedor-input {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-}
-
-.input-like {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-  width: 80%;
-  max-width: 300px;
-  height: 40px;
-  background-color: rgba(60, 133, 143, 0.8);
+.producto-en-carrito img {
+  max-width: 400px; /* Tamaño máximo de la imagen */
+  max-height: 330px; /* Tamaño máximo de la imagen */
   border-radius: 7px;
-  font-family: 'Roboto Mono';
-  font-size: 16px;
-  text-align: center;
-  color: #5F6368;
+
 }
 
-.Boton_borrar,
-.Boton_editar {
+.producto-en-carrito h4 {
+  margin: 10px 0; /* Agregar un espacio entre la imagen y el nombre */
+  font-size: 18px;
+}
+
+.producto-en-carrito p {
   width: 30vh;
   display: flex;
   justify-content: center;
@@ -173,9 +62,53 @@ body {
   color: beige;
   border: #FFFFFF;
 }
+.precio-total {
+  width: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: rgba(62, 135, 145, 0.459);
+  border-radius: 7px;
+  font-family: "Roboto Mono";
+  font-size: 12px;
+  color: beige;
+  border: #FFFFFF;
+}
+
+.Boton_editar {
+  width: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; /* Ajusta este valor para controlar la separación vertical */
+  background-color: rgba(62, 135, 145, 0.459);
+  border-radius: 9px;
+  font-family: "Roboto Mono";
+  font-size: 12px;
+  color: beige;
+  border: #FFFFFF;
+}
 
 .Boton_borrar:hover,
 .Boton_editar:hover {
+  color: #1A545C;
+}
+.btn-eliminar {
+  width: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; /* Ajusta este valor para controlar la separación vertical */
+  background-color: rgba(62, 135, 145, 0.459);
+  border-radius: 9px;
+  font-family: "Roboto Mono";
+  font-size: 12px;
+  color: beige;
+  border: #FFFFFF;
+}
+
+.btn-eliminar:hover {
   color: #1A545C;
 }
 

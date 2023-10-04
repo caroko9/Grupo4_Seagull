@@ -1,16 +1,57 @@
-// Obtener el carrito desde sessionStorage
-const carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+// Función para cargar y mostrar los productos en el carrito
+function cargarCarrito() {
+  const carrito = JSON.parse(sessionStorage.getItem('productoEnSession')) || [];
 
-// Obtén el elemento donde deseas mostrar los productos del carrito
-const carritoContainer = document.getElementById("carrito");
+  const carritoSection = document.getElementById('carrito');
 
-// Recorre los productos en el carrito y genera elementos HTML para cada uno
-carrito.forEach(producto => {
-  const productoDiv = document.createElement("div");
-  productoDiv.innerHTML = `
-    <h3>${producto.nombre}</h3>
-    <p>Precio: $${producto.precio}</p>
-    <!-- Agrega más detalles del producto según tus necesidades -->
-  `;
-  carritoContainer.appendChild(productoDiv);
+  let precioTotal = 0;
+
+  carritoSection.innerHTML = '';
+
+  carrito.forEach((producto, index) => {
+
+    const productoDiv = document.createElement('div');
+    productoDiv.classList.add('producto-en-carrito');
+
+    const productoImagen = document.createElement('img');
+    productoImagen.src = producto.imagen;
+    productoDiv.appendChild(productoImagen);
+
+    const productoNombre = document.createElement('h4');
+    productoNombre.textContent = producto.nombre;
+    productoDiv.appendChild(productoNombre);
+
+    const productoPrecio = document.createElement('p');
+    productoPrecio.textContent = `Precio: ARS $${producto.precio.toFixed(2)}`;
+    productoDiv.appendChild(productoPrecio);
+
+    // Agregar el botón "ELIMINAR" junto al producto
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'ELIMINAR';
+    botonEliminar.classList.add('btn-eliminar');
+
+    botonEliminar.addEventListener('click', () => eliminarProducto(index));
+    productoDiv.appendChild(botonEliminar);
+
+    carritoSection.appendChild(productoDiv);
+
+    precioTotal += producto.precio;
+  });
+
+  const precioTotalElement = document.querySelector('.precio-total p');
+  precioTotalElement.textContent = `TOTAL: ARS $${precioTotal.toFixed(2)}`;
+}
+
+function eliminarProducto(index) {
+  const carrito = JSON.parse(sessionStorage.getItem('productoEnSession')) || [];
+  
+  carrito.splice(index, 1);
+  
+  sessionStorage.setItem('productoEnSession', JSON.stringify(carrito));
+
+  cargarCarrito();
+}
+
+window.addEventListener('load', function () {
+  cargarCarrito();
 });

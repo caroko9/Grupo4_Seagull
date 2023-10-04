@@ -20,7 +20,7 @@
   <div class="row g-2">
     <div class="col-6">
       <div class="imagen-producto">
-        <img src="<%= productoSeleccionado.imagen %>">
+        <img class="imagenProduct" src="<%= productoSeleccionado.imagen %>">
       </div>
     </div>
 
@@ -31,7 +31,7 @@
         </h2>
         <hr>
         <dl class="row">
-          <h3>ARS $ <%= productoSeleccionado.precio %></h3>
+          <h3 class="precioProduct">ARS $ <%= productoSeleccionado.precio %></h3>
           <!-- esto no es necesario por ahora <h4><%= productoSeleccionado.descuento %></h4> -->
         </dl>
         <hr>
@@ -58,8 +58,7 @@
 
         <div class="boton de compra text-center">
          
-            <button id="agregarAlCarritoButton" class="btn btn-color" onclick="">Agregar al Carrito</button>
-      
+          <button id="agregarAlCarritoButton" class="btn btn-color" onclick="">Agregar al Carrito</button>      
         </div>        
 
       </div>
@@ -68,7 +67,7 @@
 
   <% } %>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
 
   <script>
     $(document).ready(function() {
