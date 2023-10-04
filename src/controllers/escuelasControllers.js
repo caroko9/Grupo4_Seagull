@@ -40,6 +40,16 @@ const controller = {
     }
   },
 
+  gestionEscuela: async (req, res) => {
+    try {
+      const escuelasRegistradas = await db.escuela.findAll();
+      res.render("gestion_escuela", { escuelasRegistradas });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al obtener la lista de escuelas');
+    }
+  },
+
   buscarEscuela: async (req, res) => {
     try {
       const escuelaEncontrada = req.query.buscar;
@@ -68,6 +78,22 @@ const controller = {
       }
 
       res.render('escuela-detalle', { escuela });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al obtener los detalles de la escuela');
+    }
+  },
+
+  escuelaAdmin: async (req, res) => {
+    try {
+      const escuelaId = req.params.id;
+      const escuela = await db.escuela.findByPk(escuelaId);
+
+      if (!escuela) {
+        return res.status(404).send("Escuela no encontrada");
+      }
+
+      res.render('escuelaAdmin', { escuela });
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al obtener los detalles de la escuela');

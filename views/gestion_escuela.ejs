@@ -3,95 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Escuela</title>
-  <link rel="stylesheet" href="/css/escuelas.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <title>Escuelas</title>
+  <link rel="stylesheet" href="/css/escuelasList.css">
 </head>
-<%- include ('partials/head.ejs') %>
 <body>
+  <%- include ('partials/head.ejs') %>
   <%- include ('partials/header.ejs') %>
-  <div class="contenedor-celeste">
-    <h2 class="titulo">EDITA TU ESCUELA</h2>
-
-
-       <!--boton para editar para los administradores-->
-
-       <div class="contenedor_boton">
-        
-        <a href="/escuelas/editarEscuela/<%= escuela.id %>" class="Boton_editar">EDITAR ESCUELA</a>
+  <main>
+    <div class="buscador mt-5 mx-auto text-center">
+      <h1 class="titulo">ADMINIATRACION ESCUELAS </h1>
+      <br>
+      <div class="search container-sm">
+        <nav class="navbar navbar-#B0DEE4 bg-#B0DEE4">
+          <form class="form-inlin w-100">
+            <input class="form-control mx-auto" type="search" placeholder="¿Qué escuela estás buscando?" aria-label="Search">
+          </form>
+        </nav>
       </div>
+    </div>
+      <br>
+      <div class="escuelas-contenedor">
+        <% for (let i = 0; i < escuelasRegistradas.length; i++) { %>
+          <article class="escuela">
+            <div class="imagen">
+              <a href="/escuelas/escuelaAdmin/<%= escuelasRegistradas[i].id %>">
+                <img src="<%= escuelasRegistradas[i].imagen %>" class="product1" alt="<%= escuelasRegistradas[i].nombre %>">
 
 
 
-    <form action="/escuelas/editarEscuela/<%= escuela.id %>" method="POST" name="escuelaCreada" class="formulario-container">
-      <!-- Rellena los campos del formulario con los datos de la escuela -->
-      <div class="input-1">
-        <div class="inputF">
-          <br>
-          <label for="nombre" class="nombre-input">Nombre de la Escuela</label>
-          <input type="text" class="form-control"  name="nombre" value="<%= escuela ? escuela.nombre : '' %>">
-          
-          <label for="email" class="nombre-input">Email</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="nombre@ejemplo.com" value="<%= escuela ? escuela.email : '' %>" required>
-        </div>
-        <div class="espaciador">
 
-        </div>
-        <div class="inputF">
-          <label for="descripcion" class="nombre-input">Describí tu emprendimiento</label>
-          <textarea class="form-control" name="descripcion" id="descripcion" rows="3" required><%= escuela ? escuela.descripcion : '' %></textarea>
-        </div>
+              </a>
+              <div class="linea"></div>
+              <div class="detalle">
+                <p class="nombre"><%= escuelasRegistradas[i].nombre %></p>
+                <p class="precio"><%= escuelasRegistradas[i].pais %></p>
+              
+              </div>
+            </div>
+          </article>
+        <% } %>
       </div>
-      <div class="contenedor-archivos">
-        <div class="mb-3">
-          <label for="imagen" class="nombre-input">Carga hasta tres fotos</label>
-          <input class="form-control" type="file" name="imagen" id="imagen" multiple accept="image/*" required>
-        </div>
-      </div>
-      <div class="input-2">
-        <label for="pais" class="nombre-input">País</label>
-        <input class="form-control" list="datalistOptions" name="pais" id="pais" placeholder="" value="<%= escuela ? escuela.pais : '' %>" required>
-        <datalist id="datalistOptions">
-          <select name="surfingLocation">
-
-
-            <option value="Argentina">Argentina</option>
-            <option value="Brasil">Brasil</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Costa Rica">Costa Rica</option>
-            <option value="Panamá">Panamá</option>
-            <option value="Uruguay">Uruguay</option>
-            <option value="Australia">Australia</option>
-            <option value="Irlanda">Irlanda</option>
-            <option value="Chile">Chile</option>
-            <option value="Indonesia">Indonesia</option>
-            <option value="México">México</option>
-            <option value="Estados Unidos">Estados Unidos</option>
-            <option value="Francia">Francia</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Nicaragua">Nicaragua</option>
-            <option value="Perú">Perú</option>
-            <option value="Nueva Zelanda">Nueva Zelanda</option>
-            <option value="Hawái">Hawái</option>
-            <option value="Fiyi">Fiyi</option>
-            <option value="Sudáfrica">Sudáfrica</option>
-            <option value="Japón">Japón</option>
-            <option value="Tahití">Tahití</option>
-            <option value="España">España</option>
-
-            
-          </select>
-          
-        
-        </datalist>
-        <br>
-        <button type="submit" class="boton-submit">Guardar Cambios</button>
-      </div>
-    </form>
-  </div>
-  <script src="ruta/a/jquery.js"></script>
-  <script src="ruta/a/bootstrap.js"></script>
+      
+    
+    <br>
+    
+    <%- include ('partials/footer.ejs') %>
+  </main>
   <script>
     $(document).ready(function() {
       $('.dropdown-toggle').on('click', function() {
@@ -102,6 +59,6 @@
       });
     });
   </script>
+  
 </body>
 </html>
-

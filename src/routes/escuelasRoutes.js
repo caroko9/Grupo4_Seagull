@@ -34,6 +34,11 @@ router.get('/escuelasResults', escuelasController.buscarEscuela);
 
 router.get('/escuela-detalle/:id', escuelasController.idEscuela);
 
+router.get('/escuelaAdmin/:id', escuelasController.escuelaAdmin);
+
+router.get('/gestion_escuela', escuelasController.gestionEscuela);
+
+
 router.get('/editarEscuela/:id', escuelasController.editarEscuela);
 router.post('/editarEscuela/:id', escuelasController.editarEscuela);
 router.put('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);

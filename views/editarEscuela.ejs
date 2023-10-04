@@ -13,7 +13,7 @@
   <%- include ('partials/header.ejs') %>
   <div class="contenedor-celeste">
     <h2 class="titulo">EDITA TU ESCUELA</h2>
-    <form action="/escuelas/editarEscuela/<%= escuela.id %>?_method=PUT" method="POST" enctype="multipart/form-data" name="escuelaCreada" class="formulario-container">
+    <form action="/escuelas/escuelaAdmin/<%= escuela.id %>?_method=PUT" method="POST" enctype="multipart/form-data" name="escuelaCreada" class="formulario-container">
       <!-- Rellena los campos del formulario con los datos de la escuela -->
       <div class="input-1">
         <div class="inputF">
