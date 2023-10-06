@@ -99,27 +99,45 @@ const controller = {
       res.status(500).send('Error al obtener los detalles de la escuela');
     }
   },
-
-  editarEscuela: async (req, res) => {
+  
+editarEscuela: async (req, res) => {
     try {
       const escuelaId = req.params.id;
       const escuela = await db.escuela.findByPk(escuelaId);
-
+  
       if (!escuela) {
         return res.status(404).send("Escuela no encontrada");
       }
-
+  
+      // Registros de consola para verificar los datos recibidos
+      console.log("ID de la escuela:", escuelaId);
+      console.log("Nombre nuevo:", req.body.nombre);
+      console.log("Email nuevo:", req.body.email);
+      console.log("Descripción nueva:", req.body.descripcion);
+      console.log("País nuevo:", req.body.pais);
+  
       if (req.method === "GET") {
         res.render("editarEscuela", { escuela });
       } else if (req.method === "POST") {
+        const nombreNuevo = req.body.nombre;
+        const emailNuevo = req.body.email;
+        const descripcionNueva = req.body.descripcion;
+        const paisNuevo = req.body.pais;
+  
+        // Realiza la actualización en la base de datos aquí usando los datos anteriores
         await escuela.update({
-          nombre: req.body.nombre,
-          email: req.body.email,
-          descripcion: req.body.descripcion,
-          pais: req.body.pais,
-        
+          nombre: nombreNuevo,
+          email: emailNuevo,
+          descripcion: descripcionNueva,
+          pais: paisNuevo,
         });
-
+  
+        // Vuelve a consultar la escuela después de la actualización
+        const escuelaActualizada = await db.escuela.findByPk(escuelaId);
+  
+        // Verifica los cambios en la escuela actualizada
+        console.log("Escuela actualizada:", escuelaActualizada);
+  
         res.redirect(`/escuelas/escuela-detalle/${escuelaId}`);
       }
     } catch (error) {
@@ -127,6 +145,10 @@ const controller = {
       res.status(500).send('Error al editar la escuela');
     }
   },
+  
+  
+  
+  
 };
 
 module.exports = controller;

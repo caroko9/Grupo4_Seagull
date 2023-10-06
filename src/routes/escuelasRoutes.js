@@ -38,10 +38,10 @@ router.get('/escuelaAdmin/:id', escuelasController.escuelaAdmin);
 
 router.get('/gestion_escuela', escuelasController.gestionEscuela);
 
-
 router.get('/editarEscuela/:id', escuelasController.editarEscuela);
-router.post('/editarEscuela/:id', escuelasController.editarEscuela);
-router.put('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);
+
+router.post ('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);
+
 
 module.exports = router;
 
