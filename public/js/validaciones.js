@@ -7,42 +7,55 @@ window.addEventListener("load", function () {
 
         // Validación del campo Nombre
         let campoNombre = document.querySelector("input.nombre");
+        let nombreError = document.querySelector(".nombre-error");
         if (campoNombre.value == "") {
             event.preventDefault(); // Evitar el envío del formulario
-            ulErrores.innerHTML += "<li> Debes completar este campo </li>";
+            nombreError.innerHTML = "Debes completar este campo";
         } else if (campoNombre.value.length < 2) {
             event.preventDefault(); // Evitar el envío del formulario
-            ulErrores.innerHTML += "<li>El campo de Nombre Completo debe tener al menos 2 caracteres</li>";
+            nombreError.innerHTML = "El campo de Nombre Completo debe tener al menos 2 caracteres";
+        } else {
+            nombreError.innerHTML = ""; // Limpiar error si es válido
         }
 
         // Validación del campo Email
-        let campoEmail = document.querySelector("input.email"); // Corregir el selector
+        let campoEmail = document.querySelector("input.email");
+        let emailError = document.querySelector(".email-error");
         let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; 
         if (campoEmail.value == "") {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li> Debe completar el campo Email </li>";
+            emailError.innerHTML = "Debes completar el campo Email";
         } else if (!emailPattern.test(campoEmail.value)) {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li>El campo Email no tiene un formato válido</li>";
+            emailError.innerHTML = "El campo Email no tiene un formato válido";
+        } else {
+            emailError.innerHTML = ""; // Limpiar error si es válido
         }
 
         // Validación del campo Contraseña
         let campoContrasena = document.querySelector("input.contrasena"); 
+        let contrasenaError = document.querySelector(".contrasena-error");
         if (campoContrasena.value == "") {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li>El campo de contraseña tiene que estar completo</li>";
+            contrasenaError.innerHTML = "El campo de contraseña tiene que estar completo";
         } else if (campoContrasena.value.length < 8) {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li>El campo Contraseña debe tener al menos 8 caracteres</li>";
+            contrasenaError.innerHTML = "El campo Contraseña debe tener al menos 8 caracteres";
+        } else {
+            contrasenaError.innerHTML = ""; // Limpiar error si es válido
         }
+
         // Validación del campo Telefono
         let campoTelefono = document.querySelector("input.telefono"); 
+        let telefonoError = document.querySelector(".telefono-error");
         if (campoTelefono.value == "") {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li>El campo de Telefono tiene que estar completo</li>";
+            telefonoError.innerHTML = "El campo de Teléfono tiene que estar completo";
         } else if (campoTelefono.value.length < 10) {
             event.preventDefault(); 
-            ulErrores.innerHTML += "<li>El campo Telefono debe tener al menos 10 caracteres</li>";
+            telefonoError.innerHTML = "El campo Teléfono debe tener al menos 10 caracteres";
+        } else {
+            telefonoError.innerHTML = ""; // Limpiar error si es válido
         }
     });
 });

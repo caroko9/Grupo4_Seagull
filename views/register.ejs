@@ -9,65 +9,26 @@
     
     <main>
         <div class="contenedor_form">
-            <!-- Para verificar errores en el formulario-->
-            <% if ( locals.errors ) { %>
-                <% for (let oneError in errors ) { %>
-                    <p>
-                        <%= errors[oneError].msg %>
-                    </p>
-                    <% } %>
-                        <% } %>
-
             <div class="div_form">
                 <div class="errores">
                     <ul></ul>
                 </div>
-                <form  method="POST" action="/users/register" enctype="multipart/form-data" class="formulario" name="formularioUsuario">
-
-                    <P> Regístrate y serás parte de la familia Seagull</P>
-
+                <form method="POST" action="/users/register" enctype="multipart/form-data" class="formulario" name="formularioUsuario">
+                    <p>Regístrate y serás parte de la familia Seagull</p>
                     <div class="completar">
-                        <input name="nombre" type="text" placeholder="Nombre completo" class="nombre"
-                        value="<%= locals.oldData ? oldData.nombre : null %>">
-                      <!-- Para mostrar msjs de errores en el formulario-->
-                        <% if ( locals.errors && errors.nombre) { %>
-                            <div class="text-error" >
-                            <%= errors.nombre.msg %>
-                            </div>
-                            <% } %>
-
-                        <input name="email" type="email" placeholder="E-mail" class="email"
-                        value="<%= locals.oldData ? oldData.email : null %>">
-                         <!-- Para mostrar msjs de errores en el formulario-->
-                         <% if ( locals.errors && errors.mail) { %>
-                            <div class="text-error" >
-                            <%= errors.mail.msg %>
-                            </div>
-                            <% } %>
-                        <input name="contrasena" type="password" placeholder="contraseña" class="contrasena">
-                        <!-- Para mostrar msjs de errores en el formulario-->
-                        <% if ( locals.errors && errors.contrasena) { %>
-                            <div class="text-error" >
-                            <%= errors.contrasena.msg %>
-                            </div>
-                            <% } %>
-
-
-                        <input name="telefono" type="tel" placeholder="Teléfono" class="telefono"
-                        value="<%= locals.oldData ? oldData.telefono : null %>">
-                        <% if ( locals.errors && errors.telefono) { %>
-                            <div class="text-error" >
-                            <%= errors.telefono.msg %>
-                            </div>
-                            <% } %>
-
-                      
-                    
+                        <input name="nombre" type="text" placeholder="Nombre completo" class="nombre" value="">
+                        <div class="text-error nombre-error"></div>
+                        <input name="email" type="email" placeholder="E-mail" class="email" value="">
+                        <div class="text-error email-error"></div>
+                        <input name="contrasena" type="password" placeholder="Contraseña" class="contrasena">
+                        <div class="text-error contrasena-error"></div>
+                        <input name="telefono" type="tel" placeholder="Teléfono" class="telefono" value="">
+                        <div class="text-error telefono-error"></div>
                     </div>
                     <div class="boton text-center">
                         <input type="submit" value="REGISTRARME" class="btn  btn-color" href="">
                     </div>
-                    </form>
+                </form>
             </div>
         </div>
     </main>
