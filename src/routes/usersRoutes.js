@@ -39,7 +39,7 @@ router.get('/login', guestMiddleWare, controladorUsers.iniciarSesion);
 
 router.get('/homeAdmin', controladorUsers.homeAdministration);
 
-router.post('/login', guestMiddleWare ,validations, controladorUsers.processLogin);  
+router.post('/login', guestMiddleWare ,/*validations*/ controladorUsers.processLogin);  
 
 router.get('/perfil/:userId', controladorUsers.obtenerUsuario);
 

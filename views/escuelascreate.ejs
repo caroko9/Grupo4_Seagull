@@ -1,94 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/escuelas.css">
+  <title>¡SUMA TU ESCUELA!</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
+  <link rel="stylesheet" href="/css/escuelas.css">
 </head>
-<%- include ('partials/head.ejs') %>
 <body>
- 
+  <%- include ('partials/head.ejs') %>
   <%- include ('partials/header.ejs') %>
   <div class="contenedor-celeste">
-    <h2 class="titulo">¡SUMA TU ESCUELA!</h2> <!--enctype es para poder enviar un archivo -->
-  <form action="/escuelas/escuelascreate" method="POST" enctype="multipart/form-data" name="escuelaCreada">
-  <div class="input-1">
-    <div class="inputF">
-      <br>
-      <label for="exampleFormControlInput1" class="nombre-input">Escuela de Surf</label>
-      <input type="text" class="form-control"  name="nombre" placeholder="Nombre del emprendimiento">
-      
-      <label for="exampleFormControlInput1" class="nombre-input">Email</label>
-      <input type="email" class="form-control" name="email" id="email" placeholder="nombre@ejemplo.com" required>
-    </div>
-    <div class="espaciador">
-
-    </div>
-    <div class="inputF">
-      <label for="exampleFormControlTextarea1" class="nombre-input">Describí tu emprendimiento</label>
-      <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea required>
-    </div>
+    <h2 class="titulo">¡SUMA TU ESCUELA!</h2>
+    <form action="/escuelas/escuelascreate" method="POST" enctype="multipart/form-data" class="formularioo" name="escuelaCreada">
+     
+        <div class="input-1">
+        <div class="inputF">
+          <br>
+         
+          <label for="nombre" class="nombre-input">Escuela de Surf</label>
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del emprendimiento">
+          
+          <label for="email" class="nombre-input">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="nombre@ejemplo.com" required>
+        
+        </div>
+       
+        <div class="espaciador"></div>
+        <div class="inputF">
+       
+          <label for="descripcion" class="nombre-input">Describí tu emprendimiento</label>
+          <textarea class="form-control" name="descripcion" id="descripcion" rows="3" required></textarea>
+       
+        </div>
+     
+        </div>
+        <div class="contenedor-archivos">
+        <div class="mb-3">
+     
+          <label for="imagen" class="nombre-input">Carga hasta tres fotos</label>
+          <input class="form-control" type="file" name="imagen" id="imagen" multiple accept="image/*" required>
+        
+        </div>
+        </div>
+        <div class="input-2">
+        
+          <label for="pais" class="nombre-input">Pais</label>
+          <input class="form-control" list="datalistOptions" name="pais" id="pais" placeholder="" required>
+        
+          <datalist id="datalistOptions">
+        
+            <option value="Argentina">Argentina</option>
+          
+          </datalist>
+       
+          <br>
+        <input type="submit" value="Enviar" class="boton-submit">
+      </div>
+    </form>
+    <script src="/js/validaciones2.js"></script>
+    <script src="ruta/a/jquery.js"></script>
+    <script src="ruta/a/bootstrap.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.dropdown-toggle').on('click', function() {
+          // Cierra todos los menús desplegables
+          $('.dropdown-menu').removeClass('show');
+          // Abre el menú desplegable asociado al botón que se hizo clic
+          $(this).next('.dropdown-menu').toggleClass('show');
+        });
+      });
+    </script>
   </div>
-<div class="contenedor-archivos">
-
- <div class="mb-3">
-  <label for="formFileMultiple" class="nombre-input">Carga hasta tres fotos</label>
-  <input class="form-control" type="file" name="imagen" id="imagen" multiple accept="image/*" required>
-</div>
-
-  
-</div>
-<div class="input-2">
-
-    <label for="exampleDataList" class="nombre-input">Pais</label>
-    <input class="form-control" list="datalistOptions" name="pais" id="pais" placeholder="" required>
-    <datalist id="datalistOptions">
-      <option value="Argentina">Argentina</option>
-      <option value="Brasil">Brasil</option>
-      <option value="Colombia">Colombia</option>
-      <option value="Costa Rica">Costa Rica</option>
-      <option value="Panamá">Panamá</option>
-      <option value="Uruguay">Uruguay</option>
-      <option value="Australia">Australia</option>
-      <option value="Irlanda">Irlanda</option>
-      <option value="Chile">Chile</option>
-      <option value="Indonesia">Indonesia</option>
-      <option value="México">México</option>
-      <option value="Estados Unidos">Estados Unidos</option>
-      <option value="Francia">Francia</option>
-      <option value="Portugal">Portugal</option>
-      <option value="Nicaragua">Nicaragua</option>
-      <option value="Perú">Perú</option>
-      <option value="Nueva Zelanda">Nueva Zelanda</option>
-      <option value="Hawái">Hawái</option>
-      <option value="Fiyi">Fiyi</option>
-      <option value="Sudáfrica">Sudáfrica</option>
-      <option value="Japón">Japón</option>
-      <option value="Tahití">Tahití</option>
-      <option value="España">España</option>
-  </datalist>
-  <br>
-  <input type="submit" value="Enviar" class="boton-submit">
-</div>
-
-</form>
-<script src="ruta/a/jquery.js"></script>
-<script src="ruta/a/bootstrap.js"></script>
-<script>
-  $(document).ready(function() {
-    $('.dropdown-toggle').on('click', function() {
-      // Cierra todos los menús desplegables
-      $('.dropdown-menu').removeClass('show');
-      // Abre el menú desplegable asociado al botón que se hizo clic
-      $(this).next('.dropdown-menu').toggleClass('show');
-    });
-  });
-</script>
-
 </body>
 </html>

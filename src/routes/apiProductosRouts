@@ -1,0 +1,8 @@
+const express = require ("express")
+const router = express.router
+const controller = require ("../controllers/apiProductosController")
+
+router.get('/productos/producto', controller.list)
+
+
+module.exports = router
