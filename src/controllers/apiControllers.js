@@ -18,5 +18,22 @@ module.exports = {
           status: 500
         });
       });
+  },
+  escuelasList: (req, res) => {
+    db.escuela
+      .findAll()
+      .then(escuela => {
+        return res.status(200).json({
+          total: escuela.length,
+          data: escuela,
+          status: 200
+        });
+      })
+      .catch(error => {
+        return res.status(500).json({
+          error: 'Error al obtener escuelas',
+          status: 500
+        });
+      });
   }
-};
+}
