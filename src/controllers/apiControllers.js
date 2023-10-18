@@ -2,7 +2,7 @@ const db = require('../database/models');
 const { producto } = require('../database/models');
 
 module.exports = {
-  list: (req, res) => {
+  productosList: (req, res) => {
     db.producto
       .findAll()
       .then(productos => {
