@@ -1,5 +1,5 @@
 const db = require('../database/models');
-const { producto } = require('../database/models');
+const { producto, escuela } = require('../database/models');
 
 module.exports = {
   productosList: (req, res) => {
@@ -35,5 +35,28 @@ module.exports = {
           status: 500
         });
       });
+  },
+  escuelaDetails: (req, res) => {
+    const escuelaId = req.params.id; 
+    db.escuela
+      .findOne({ where: { id: escuelaId } }) 
+      .then(escuela => {
+        if (!escuela) {
+          return res.status(404).json({
+            error: 'Escuela no encontrada',
+            status: 404
+          });
+        }
+        return res.status(200).json({
+          data: escuela,
+          status: 200
+        });
+      })
+      .catch(error => {
+        return res.status(500).json({
+          error: 'Error al obtener detalles de la escuela',
+          status: 500
+        });
+      });
   }
-}
+};
