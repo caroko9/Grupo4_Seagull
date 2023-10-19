@@ -3,28 +3,40 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models'); 
 
 const controladorUsuario = {
-  homeAdministration: (req, res) => {
-    res.render("homeAdmin");
+
+  register: (req, res) => {
+    res.render("register");
   },
 
-  obtenerUsuario: async (req, res) => {
+  createUser: async (req, res) => {
     try {
-      const userId = req.params.userId;
-      const usuario = await db.usuario.findByPk(userId);
-  
-      if (!usuario) {
-        return res.status(404).send('Usuario no encontrado');
-      }
-  
+      const resultValidation = validationResult(req);
 
-      console.log('Usuario encontrado:', usuario);
-  
-      res.render('perfil', { usuario: usuario });
+      if (resultValidation.errors.length > 0) {
+        return res.render('register', {
+          errors: resultValidation.mapped(),
+          oldData: req.body,
+        });
+      }
+
+      const { nombre, email, contrasena, telefono } = req.body;
+      const hashedPassword = bcrypt.hashSync(contrasena, 10);
+
+
+      await db.usuario.create({
+        nombre: nombre,
+        email: email,
+        contrasena: hashedPassword,
+        telefono: telefono
+      });
+
+      res.redirect('/');
     } catch (error) {
       console.error(error);
-      res.status(500).send('Error al obtener el usuario');
+      res.status(500).send('Error al crear el usuario');
     }
   },
+
   quienesSomos: (req, res ) => {
     res.render("quienesSomos")
   },
@@ -32,6 +44,7 @@ const controladorUsuario = {
   iniciarSesion: (req, res) => {
     res.render("login");
   },
+
 
   processLogin: async (req, res) => {
     try {
@@ -65,8 +78,24 @@ const controladorUsuario = {
     }
   },
 
-  register: (req, res) => {
-    res.render("register");
+
+  obtenerUsuario: async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const usuario = await db.usuario.findByPk(userId);
+  
+      if (!usuario) {
+        return res.status(404).send('Usuario no encontrado');
+      }
+  
+
+      console.log('Usuario encontrado:', usuario);
+  
+      res.render('perfil', { usuario: usuario });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al obtener el usuario');
+    }
   },
 
   perfil: async (req, res) => {
@@ -85,33 +114,9 @@ const controladorUsuario = {
     }
   },
 
-  create: async (req, res) => {
-    try {
-      const resultValidation = validationResult(req);
-
-      if (resultValidation.errors.length > 0) {
-        return res.render('register', {
-          errors: resultValidation.mapped(),
-          oldData: req.body,
-        });
-      }
-
-      const { nombre, email, contrasena, telefono } = req.body;
-      const hashedPassword = bcrypt.hashSync(contrasena, 10);
-
-
-      await db.usuario.create({
-        nombre: nombre,
-        email: email,
-        contrasena: hashedPassword,
-        telefono: telefono
-      });
-
-      res.redirect('/');
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error al crear el usuario');
-    }
+  
+  homeAdministration: (req, res) => {
+    res.render("homeAdmin");
   },
 };
 
