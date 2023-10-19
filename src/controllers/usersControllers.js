@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const db = require('../database/models'); // Importa el modelo de usuario
+const db = require('../database/models'); 
 
 const controladorUsuario = {
   homeAdministration: (req, res) => {
@@ -16,7 +16,7 @@ const controladorUsuario = {
         return res.status(404).send('Usuario no encontrado');
       }
   
-      // Agregar un console.log para mostrar el usuario encontrado
+
       console.log('Usuario encontrado:', usuario);
   
       res.render('perfil', { usuario: usuario });
@@ -49,15 +49,16 @@ const controladorUsuario = {
       const usuario = await db.usuario.findOne({
         where: {
           email: email,
+          contrasena: contrasena, 
         },
       });
 
-      if (!usuario || !bcrypt.compareSync(contrasena, usuario.contrasena)) {
+      if (!usuario) {
         return res.render('login', { errors: [{ msg: 'Credenciales inválidas' }] });
       }
-
       req.session.usuarioLogueado = usuario;
       res.redirect('/users/homeAdmin');
+
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al procesar la solicitud');
@@ -97,6 +98,7 @@ const controladorUsuario = {
 
       const { nombre, email, contrasena, telefono } = req.body;
       const hashedPassword = bcrypt.hashSync(contrasena, 10);
+
 
       await db.usuario.create({
         nombre: nombre,
