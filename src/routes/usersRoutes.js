@@ -10,11 +10,8 @@ const guestMiddleWare = require('../../middleware/guestMiddleWare');
 
 //middleware que se usa en la ruta POST de register
 const validations = [
-    /* body('telefono').notEmpty().withMessage('Tienes que ingresar tu teléfono'),
-    body('nombre').notEmpty().withMessage('Tienes que ingresar tu nombre'),*/
     body('email').notEmpty().withMessage('Tienes que ingresar tu email'),
     body('contrasena').notEmpty().withMessage('Tienes que ingresar una contraseña'),
-   
 ]
 
 let usermulterDiskStorage = multer.diskStorage({
@@ -41,7 +38,7 @@ router.get('/login', guestMiddleWare, controladorUsers.iniciarSesion);
 
 router.get('/homeAdmin', controladorUsers.homeAdministration);
 
-router.post('/login', guestMiddleWare ,/*validations*/ controladorUsers.processLogin);  
+router.post('/login', guestMiddleWare , validations,  controladorUsers.processLogin);  
 
 router.get('/perfil/:userId', controladorUsers.obtenerUsuario);
 
