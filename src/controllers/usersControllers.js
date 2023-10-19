@@ -25,7 +25,9 @@ const controladorUsuario = {
       res.status(500).send('Error al obtener el usuario');
     }
   },
-  
+  quienesSomos: (req, res ) => {
+    res.render("quienesSomos")
+  },
 
   iniciarSesion: (req, res) => {
     res.render("login");
