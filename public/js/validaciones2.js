@@ -1,62 +1,53 @@
-  window.addEventListener("load", function () {
-    let formulario = document.querySelector("form.formularioo");
+document.addEventListener('DOMContentLoaded', function () {
+  const formulario = document.forms['escuelaCreada'];
 
-    formulario.addEventListener("submit", function (event) {
-      let ulErrores = document.querySelector("div.errores ul");
-      ulErrores.innerHTML = ""; // Limpiar errores anteriores
+  formulario.addEventListener('submit', function (event) {
+    let valid = true;
 
-      // Validación del campo Nombre
-      let campoNombre = document.querySelector("input[name=nombre]");
-      let nombreError = document.querySelector(".nombre-error");
-      if (campoNombre.value == "") {
-        event.preventDefault(); // Evitar el envío del formulario
-        nombreError.innerHTML = "Debes completar este campo";
-      } else {
-        nombreError.innerHTML = ""; // Limpiar error si es válido
-      }
+    // Validación del campo "nombre"
+    const nombreInput = formulario.querySelector('#nombre');
+    if (nombreInput.value.trim() === '') {
+      alert('Por favor, ingresa un nombre para el emprendimiento.');
+      valid = false;
+    }
 
-      // Validación del campo Email
-      let campoEmail = document.querySelector("input[name=email]");
-      let emailError = document.querySelector(".email-error");
-      let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      if (campoEmail.value == "") {
-        event.preventDefault();
-        emailError.innerHTML = "Debes completar el campo Email";
-      } else if (!emailPattern.test(campoEmail.value)) {
-        event.preventDefault();
-        emailError.innerHTML = "El campo Email no tiene un formato válido";
-      } else {
-        emailError.innerHTML = ""; // Limpiar error si es válido
-      }
+    // Validación del campo "email"
+    const emailInput = formulario.querySelector('#email');
+    const emailValue = emailInput.value.trim();
+    if (emailValue === '' || !validateEmail(emailValue)) {
+      alert('Por favor, ingresa una dirección de correo electrónico válida.');
+      valid = false;
+    }
 
-      // Validación del campo Descripción
-      let campoDescripcion = document.querySelector("textarea[name=descripcion]");
-      let descripcionError = document.querySelector(".descripcion-error");
-      if (campoDescripcion.value == "") {
-        event.preventDefault();
-        descripcionError.innerHTML = "Debes completar el campo Descripción";
-      } else {
-        descripcionError.innerHTML = ""; // Limpiar error si es válido
-      }
+    // Validación del campo "descripcion"
+    const descripcionInput = formulario.querySelector('#descripcion');
+    if (descripcionInput.value.trim() === '') {
+      alert('Por favor, describe tu emprendimiento.');
+      valid = false;
+    }
 
-      // Validación del campo Imagen
-      let campoImagen = document.querySelector("input[name=imagen]");
-      let imagenError = document.querySelector(".imagen-error");
-      if (campoImagen.files.length === 0) {
-        event.preventDefault();
-        imagenError.innerHTML = "Debes cargar al menos una imagen";
-      } else {
-        imagenError.innerHTML = ""; // Limpiar error si es válido
-      }
+    // Validación del campo "imagen"
+    const imagenInput = formulario.querySelector('#imagen');
+    if (!imagenInput.files.length) {
+      alert('Por favor, carga al menos una imagen.');
+      valid = false;
+    }
 
-      // Validación del campo País
-      let campoPais = document.querySelector("input[name=pais]");
-      let paisError = document.querySelector(".pais-error");
-      if (campoPais.value == "") {
-        event.preventDefault();
-        paisError.innerHTML = "Debes completar el campo País";
-      } else {
-        paisError.innerHTML = ""; // Limpiar error si es válido
-      }
-    });
+    // Validación del campo "pais"
+    const paisInput = formulario.querySelector('#pais');
+    if (paisInput.value.trim() === '') {
+      alert('Por favor, selecciona un país.');
+      valid = false;
+    }
+
+    if (!valid) {
+      event.preventDefault(); // Evita el envío del formulario si hay errores de validación.
+    }
   });
+
+  // Función para validar el formato del correo electrónico
+  function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+});

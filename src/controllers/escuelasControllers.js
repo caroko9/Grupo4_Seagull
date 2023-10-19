@@ -9,26 +9,30 @@ const controller = {
   creaEscuela: async (req, res) => {
     try {
       const escuelaNueva = req.body;
-      const escuelaimgUpload = req.files; 
+      const escuelaimgUpload = req.files;
+  
+      if (!escuelaimgUpload || escuelaimgUpload.length === 0) {
+        return res.status(400).send('Debes cargar al menos una imagen');
+      }
+  
       const primeraImagen = escuelaimgUpload[0].filename;
-
-      
       const imagenCloudinaryURL = `https://res.cloudinary.com/djpb4ilrq/image/upload/${primeraImagen}`;
-
+  
       const nuevaEscuela = await db.escuela.create({
         nombre: escuelaNueva.nombre,
         email: escuelaNueva.email,
         descripcion: escuelaNueva.descripcion,
         pais: escuelaNueva.pais,
-        imagen: imagenCloudinaryURL, 
+        imagen: imagenCloudinaryURL,
       });
-      
+  
       res.redirect("./escuelasList");
     } catch (error) {
       console.error(error);
       res.status(500).send(`Error al crear la escuela: ${error.message}`);
     }
   },
+  
 
   list: async (req, res) => {
     try {
