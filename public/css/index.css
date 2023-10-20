@@ -46,13 +46,11 @@ p
     opacity: 0.8;
 }
 .boton_buscar{
-    background-color: #7fc4dba6;
-    border-radius:  6px; ; 
-    padding: 5px;
-    width: 88px;
-    height: 35px;
-    font-family: 'Roboto Mono', monospace;
-    
+    font-family: 'Klee One';
+    color: #03131a;
+    background-color: #c9ebf0;
+    border: #FFFFFF;
+    font-size: 16px;
 }
 .input_buscar{
     background-color: rgba(255, 255, 255, 0.466);
