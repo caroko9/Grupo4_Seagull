@@ -12,13 +12,18 @@
         <h3 class="TextEscuelas">Escuelas encontradas:</h3>
        <div class="contenedorMayor"> 
         <div class="contenedorEscuelas">
-        <ul>
-        <% for (let i = 0; i < escuelasBuscadas.length; i++) { %>
-            <li>
-                <a href="/escuelas/escuela-detalle/<%= escuelasBuscadas[i].id %>"><%=  escuelasBuscadas[i].nombre %></a>
-            </li>
-        <% } %>
-        </ul>
+      <!-- En escuelasResults.ejs -->
+<ul>
+  <% escuelasEncontradas.forEach(escuela => { %>
+    <li>
+      <h4><%= escuela.nombre %></h4>
+      <p><%= escuela.descripcion %></p>
+      <p>Ubicación: <%= escuela.pais %></p>
+      <!-- Aquí puedes mostrar la imagen de la escuela si es necesario -->
+    </li>
+  <% }); %>
+</ul>
+
     </div>  
     </div> 
        

@@ -32,8 +32,24 @@ const controller = {
       res.status(500).send(`Error al crear la escuela: ${error.message}`);
     }
   },
-  
+  buscarEscuelaPorUbicacion: async (req, res) => {
+    try {
+      const ubicacion = req.query.ubicacion; // Obtiene la ubicación de la consulta GET
 
+
+      // Realiza una consulta a la base de datos para encontrar escuelas que coincidan con la ubicación
+      const escuelasEncontradas = await db.escuela.findAll({
+        where: {
+          ubicacion: ubicacion, // Suponiendo que la ubicación se busca por país
+        },
+      });
+
+      res.render('escuelasResults', { escuelasEncontradas });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al buscar escuelas por ubicación');
+    }
+  },
   list: async (req, res) => {
     try {
       const escuelasRegistradas = await db.escuela.findAll();
@@ -54,23 +70,7 @@ const controller = {
     }
   },
 
-  buscarEscuela: async (req, res) => {
-    try {
-      const escuelaEncontrada = req.query.buscar;
-      const escuelasBuscadasArray = await db.Escuela.findAll({
-        where: {
-          nombre: {
-            [db.Sequelize.Op.iLike]: `%${escuelaEncontrada}%`,
-          },
-        },
-      });
 
-      res.render("escuelasResults", { escuelasBuscadas: escuelasBuscadasArray });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error al buscar escuelas');
-    }
-  },
 
   idEscuela: async (req, res) => {
     try {

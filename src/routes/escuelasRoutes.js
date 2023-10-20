@@ -30,7 +30,6 @@ router.post('/escuelascreate', upload.array('imagen'), escuelasController.creaEs
 
 router.get('/escuelasList', escuelasController.list);
 
-router.get('/escuelasResults', escuelasController.buscarEscuela);
 
 router.get('/escuela-detalle/:id', escuelasController.idEscuela);
 
@@ -39,6 +38,10 @@ router.get('/escuelaAdmin/:id', escuelasController.escuelaAdmin);
 router.get('/gestion_escuela', escuelasController.gestionEscuela);
 
 router.get('/editarEscuela/:id', escuelasController.editarEscuela);
+
+
+router.get('/escuelasResults', escuelasController.buscarEscuelaPorUbicacion);
+
 
 router.post ('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);
 
