@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('partials/head.ejs') %>
+    <title>Consejos para tus Viajes de Surf</title>
+    <link href="/css/TipsParaTusViajes.css" rel="stylesheet">
+</head>
+<body>
+    <%- include ('partials/header.ejs') %>
+
+    <div> 
+        <img class="imagen" src="/img/foto111.jpeg">
+    </div> 
+    <br>
+    <br>
+    <br>
+
+    <div class="contenedorP">
+        <h4 class="titulo">Consejos para tus Viajes de Surf:</h4>
+        <h2 class="texto2">1. Preparación Antes del Viaje:</h2>
+        <p class="texto3">
+            Antes de tu viaje, asegúrate de tener el equipo adecuado, como una tabla de surf, 
+            traje de neopreno y parafina. Además, es fundamental revisar y mantener tu equipo en buen estado. 
+            Asegúrate de que tu tabla esté encerada y que no tenga daños. Lleva contigo repuestos como quillas
+             adicionales y una llave de quillas. Un leash confiable también es esencial para no perder tu tabla en el agua. 
+             No olvides un traje de neopreno adecuado para las condiciones de temperatura del agua en tu destino.
+        </p>
+        
+        <h2 class="texto2">2. Investigación de Destino:</h2>
+        <p class="texto3">
+            Investiga las condiciones del mar y las mejores playas para surfear en tu destino. 
+            Consulta las previsiones de olas con anticipación para planificar tus sesiones de surf. 
+            Averigua cuál es la temporada ideal para surfear en la zona, ya que las condiciones pueden variar a lo largo del año. 
+            Conocer la geografía del lugar, como la dirección de las olas y los puntos de quiebre, 
+            te ayudará a sacar el máximo provecho de tus sesiones de surf.
+        </p>
+        
+        <h2 class="texto2">3. Clases de Surf:</h2>
+        <p class="texto3">
+            En Seagull, te recomendamos encarecidamente considerar tomar clases de surf con nuestros instructores altamente calificados. 
+            No solo aprenderás técnicas importantes y mejorarás tu seguridad en el agua, sino que también descubrirás una experiencia única de 
+            aprendizaje respaldada 
+            por la pasión y el compromiso de Seagull por brindarte lo mejor en deportes acuáticos.
+            Nuestros instructores no solo te enseñarán a surfear, sino que también te guiarán a 
+            través de los secretos y las habilidades necesarias para dominar las olas. Son apasionados por 
+            compartir su amor por el surf y garantizar que tengas una experiencia inolvidable en el agua.
+            Ya seas un principiante emocionado por subir a una tabla por primera vez o un surfista experimentado
+            buscando perfeccionar tu estilo, las clases de surf de Seagull están diseñadas para adaptarse a tus necesidades 
+            y niveles. Incluso los surfistas con experiencia pueden beneficiarse de las lecciones para enfrentar
+            nuevas condiciones de surf con confianza y mejorar aún más su técnica.
+        
+            Además, al unirte a nuestra comunidad Seagull, tendrás acceso a patrocinios exclusivos y descuentos especiales en las mejores escuelas de surf. Esto significa que podrás aprovechar al máximo tus lecciones y equiparte con el equipo de la más alta calidad. Seagull se enorgullece de ser tu compañero confiable en tu viaje de surf, brindándote todas las herramientas necesarias para que disfrutes al máximo de tus aventuras en las olas.
+        </p>
+        
+        <h2 class="texto2">4. Seguridad en el Agua:</h2>
+        <p class="texto3">
+            Conoce las normas de seguridad en el agua. Mantén una distancia segura de otros surfistas y respeta las 
+            reglas locales de prioridad en las olas. Aprende a identificar y lidiar con las corrientes, mareas y vientos. 
+            Lleva contigo un dispositivo de flotación, como un chaleco salvavidas o un traje de neopreno con flotación adicional. 
+            Siempre surfea con un amigo o avisa a alguien sobre tu sesión de surf planificada.
+        </p>
+        
+        <h2 class="texto2">5. Cuidado del Medio Ambiente:</h2>
+        <p class="texto3">
+            Sé consciente del impacto ambiental. No dejes basura en la playa y respeta la vida marina.
+             Utiliza ceras de surf ecológicas y productos respetuosos con el medio ambiente. Contribuye a la limpieza de
+              la playa y participa en actividades de conservación marina. El surfistas desempeñan un papel crucial en la protección 
+              de nuestros océanos y playas, así que sé un defensor del entorno en el que disfrutas de tus sesiones de surf.
+        </p>
+        
+    </div>
+    
+    
+
+
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-toggle').on('click', function() {
+                // Cierra todos los menús desplegables
+                $('.dropdown-menu').removeClass('show');
+                // Abre el menú desplegable asociado al botón que se hizo clic
+                $(this).next('.dropdown-menu').toggleClass('show');
+            });
+        });
+    </script>
+
+    <%- include ('partials/footer.ejs') %>
+</body>
+</html>

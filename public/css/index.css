@@ -45,6 +45,20 @@ p
     width: 40em;
     opacity: 0.8;
 }
+.boton_buscar{
+    background-color: #7fc4dba6;
+    border-radius:  6px; ; 
+    padding: 5px;
+    width: 88px;
+    height: 35px;
+    font-family: 'Roboto Mono', monospace;
+    
+}
+.input_buscar{
+    background-color: rgba(255, 255, 255, 0.466);
+    border: 5px solid #afe3f5a6;
+    border-radius: 8px;
+}
 
 .search input[type="search"] {
     font-family: 'Klee One', cursive;

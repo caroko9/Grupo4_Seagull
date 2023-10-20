@@ -40,6 +40,9 @@ const controladorUsuario = {
   quienesSomos: (req, res ) => {
     res.render("quienesSomos")
   },
+  tipsParaTusViajes: (req, res) => {
+  res.render("tipsParaTusViajes")
+  },
 
   iniciarSesion: (req, res) => {
     res.render("login");

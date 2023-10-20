@@ -101,6 +101,10 @@ p{
     position: relative;
     z-index: 2;
   }
+  .contenedor_boton{
+  margin-left: 880px;
+  margin-top: 350px;
+  }
 
 .Boton_editar{
   background-color: rgba(255, 255, 255, 0.466);
@@ -111,7 +115,6 @@ p{
   align-items: center;
   position: relative;
   margin-top: 20px;
-  margin-left: 180px;
   width: 400px;
   height: 70px;
   font-family: "Klee One";

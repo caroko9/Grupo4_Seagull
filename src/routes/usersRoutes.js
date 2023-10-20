@@ -34,6 +34,8 @@ router.post('/register', usuarioimgUpload.single('imagenPerfil'),  controladorUs
 
 router.get('/quienesSomos', controladorUsers.quienesSomos )
 
+router.get('/tipsParaTusViajes', controladorUsers.tipsParaTusViajes)
+
 router.get('/login', guestMiddleWare, controladorUsers.iniciarSesion);
 
 router.post('/login', guestMiddleWare ,validations, controladorUsers.processLogin);  
