@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <link href="/css/escuelasResults.css" rel="stylesheet">
-    
-<%- include ('partials/head.ejs') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escuelas</title>
+  <link rel="stylesheet" href="/css/escuelasList.css">
+</head>
 <body>
-    <%- include('partials/header.ejs') %>
-
-    <main>   
-        <h3 class="TextEscuelas">Escuelas encontradas:</h3>
-       <div class="contenedorMayor"> 
-        <div class="contenedorEscuelas">
-      <!-- En escuelasResults.ejs -->
-<ul>
-  <% escuelasEncontradas.forEach(escuela => { %>
-    <li>
-      <h4><%= escuela.nombre %></h4>
-      <p><%= escuela.descripcion %></p>
-      <p>Ubicación: <%= escuela.pais %></p>
-      <!-- Aquí puedes mostrar la imagen de la escuela si es necesario -->
-    </li>
-  <% }); %>
-</ul>
-
-    </div>  
-    </div> 
-       
-    </main>
-    <script>
-        $(document).ready(function() {
-          $('.dropdown-toggle').on('click', function() {
-            // Cierra todos los menús desplegables
-            $('.dropdown-menu').removeClass('show');
-            // Abre el menú desplegable asociado al botón que se hizo clic
-            $(this).next('.dropdown-menu').toggleClass('show');
-          });
-        });
-      </script>
+  <%- include ('partials/head.ejs') %>
+  <%- include ('partials/header.ejs') %>
+  <main>
+    <div class="buscador mt-5 mx-auto text-center">
+      <h1 class="titulo">ESCUELAS</h1>
+      <br>
+      <div class="search container-sm">
+        <nav class="navbar navbar-#B0DEE4 bg-#B0DEE4">
+        </nav>
+      </div>
+    </div>
+    <br>
+    <div class="escuelas-contenedor">
+      <% for (let i = 0; i < escuelasEncontradas.length; i++) { %>
+        <article class="escuela">
+          <div class="imagen">
+            <a href="/escuelas/escuela-detalle/<%= escuelasEncontradas[i].id %>">
+              <img src="<%= escuelasEncontradas[i].imagen %>" class="product1" alt="<%= escuelasEncontradas[i].nombre %>">
+            </a>
+            <div class="linea"></div>
+            <div class="detalle">
+              <p class="nombre"><%= escuelasEncontradas[i].nombre %></p>
+              <p class="precio"><%= escuelasEncontradas[i].pais %></p>
+            </div>
+          </div>
+        </article>
+      <% } %>
+    </div>
+    <br>
+    <%- include ('partials/footer.ejs') %>
+  </main>
+  <script>
+    $(document).ready(function() {
+      $('.dropdown-toggle').on('click', function() {
+        // Cierra todos los menús desplegables
+        $('.dropdown-menu').removeClass('show');
+        // Abre el menú desplegable asociado al botón que se hizo clic
+        $(this).next('.dropdown-menu').toggleClass('show');
+      });
+    });
+  </script>
 </body>
-
 </html>
-
-
-<%- include ('partials/footer.ejs') %>
