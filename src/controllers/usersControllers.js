@@ -40,8 +40,13 @@ const controladorUsuario = {
   quienesSomos: (req, res ) => {
     res.render("quienesSomos")
   },
+
   tipsParaTusViajes: (req, res) => {
   res.render("tipsParaTusViajes")
+  },
+
+  historiaSurf:(req, res) => {
+    res.render("historia")
   },
 
   iniciarSesion: (req, res) => {
