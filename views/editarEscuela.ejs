@@ -32,18 +32,18 @@
         </div>
         <div class="inputF">
           <label for="descripcion" class="nombre-input">Describí tu emprendimiento</label>
-          <textarea class="form-control" name="descripcion" id="descripcion" rows="3" required><%= escuela ? escuela.descripcion : '' %></textarea>
+          <textarea class="form-control" name="descripcion" id="descripcion" rows="3" ><%= escuela ? escuela.descripcion : '' %></textarea>
         </div>
       </div>
       <div class="contenedor-archivos">
         <div class="mb-3">
           <label for="imagen" class="nombre-input">Carga hasta tres fotos</label>
-          <input class="form-control" type="file" name="imagen" id="imagen" multiple accept="image/*" required>
+          <input class="form-control" type="file" name="imagen" id="imagen" multiple accept="image/*" >
         </div>
       </div>
       <div class="input-2">
         <label for="pais" class="nombre-input">País</label>
-        <input class="form-control" list="datalistOptions" name="pais" id="pais" placeholder="" value="<%= escuela ? escuela.pais : '' %>" required>
+        <input class="form-control" list="datalistOptions" name="pais" id="pais" placeholder="" value="<%= escuela ? escuela.pais : '' %>" >
         <datalist id="datalistOptions">
           <select name="surfingLocation">
 
@@ -82,7 +82,7 @@
       </div>
     </form>
   </div>
-  <script src="ruta/a/jquery.js"></script>
+  <script src="/js/validaciones3.js"></script>
   <script src="ruta/a/bootstrap.js"></script>
   <script>
     $(document).ready(function() {
