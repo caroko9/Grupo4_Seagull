@@ -9,24 +9,22 @@
     <%- include ('partials/header.ejs') %>
         <main>
 
-  <!-- Resto de tu código HTML -->
 
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
     <div class="card p-4">
         <div class="image d-flex flex-column justify-content-center align-items-center">
-            <!-- Mostrar la imagen y los detalles del usuario -->
+          
             <button class="btn btn-secondary">
                 <img src="/img/usuarios/<%= usuario.imagenPerfil %>" height="100" width="100" />
             </button>
             </button>
             <span class="name mt-3"><%= usuario.nombre %></span>
-            <span class="email"><%= usuario.email %></span> <!-- Agrega esta línea -->
-            <!-- Mostrar otros detalles del usuario según tu estructura -->
+            <span class="email"><%= usuario.email %></span> 
+           
         </div>
     </div>
 </div>
 
-<!-- Resto de tu código HTML -->
 
         </main>
         <%- include ('partials/footer.ejs') %>

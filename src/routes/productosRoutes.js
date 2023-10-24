@@ -23,7 +23,7 @@ cloudinary.config({
   });
 
   const upload = multer({ storage: storage });
-//ROUTES
+
 router.get('/productos', productosController.listadoProducto);
 
 router.post('/crearProducto', upload.single('imagen'), productosController.crearProducto);
