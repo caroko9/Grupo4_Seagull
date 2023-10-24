@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const escuelasController = require('../controllers/escuelasControllers');
+const restricciones = require('../../middleware/restricciones');
 
           
 cloudinary.config({ 
@@ -27,7 +28,7 @@ router.get('/escuelascreate', escuelasController.sumaEscuela);
 
 router.post('/escuelascreate', upload.array('imagen'), escuelasController.creaEscuela);
 
-router.get('/creaEscuelaAdmin', escuelasController.escuelaAdminVista);
+router.get('/creaEscuelaAdmin',restricciones, escuelasController.escuelaAdminVista);
 
 router.post('/creaEscuelaAdmin', upload.array('imagen'), escuelasController.creaEscuelaAdmin);
 
@@ -35,13 +36,13 @@ router.get('/escuelasList', escuelasController.list);
 
 router.get('/escuela-detalle/:id', escuelasController.idEscuela);
 
-router.get('/escuelaAdmin/:id', escuelasController.escuelaAdmin);
+router.get('/escuelaAdmin/:id', restricciones, escuelasController.escuelaAdmin);
 
 router.delete ('/escuelaAdmin/:id', escuelasController.eliminarEscuela)
 
 router.get('/gestion_escuela', escuelasController.gestionEscuela);
 
-router.get('/editarEscuela/:id', escuelasController.editarEscuela);
+router.get('/editarEscuela/:id', restricciones, escuelasController.editarEscuela);
 
 router.get('/escuelasResults', escuelasController.buscarEscuelaPorUbicacion);
 

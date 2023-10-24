@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const multer = require('multer');
-const { body, check } = require('express-validator'); //usamos express validator para validar los datos del form
-/* vinculando con el archivo productosRoutes.js */
+const { body, check } = require('express-validator');
+
 const controladorUsers = require ('../controllers/usersControllers');
 const guestMiddleWare = require('../../middleware/guestMiddleWare');
+const restricciones = require('../../middleware/restricciones');
 
 
-//middleware que se usa en la ruta POST de register
+
 const validations = [
     body('email').notEmpty().withMessage('Tienes que ingresar tu email'),
     body('contrasena').notEmpty().withMessage('Tienes que ingresar una contraseña'),
@@ -25,7 +26,7 @@ cb(null, usuarioimg);
    },
 });
 
-//Creamos una variable para invocar multer, pasamos como param la propiedad storage y asignamos la var creada en el paso anterior
+
 let usuarioimgUpload = multer({ storage : usermulterDiskStorage });
 
 router.get('/register', guestMiddleWare, controladorUsers.register);
@@ -46,7 +47,7 @@ router.get('/perfil/:userId', controladorUsers.obtenerUsuario);
 
 router.get('/perfil/:userId' , controladorUsers.perfil);
 
-router.get('/homeAdmin', controladorUsers.homeAdministration);
+router.get('/homeAdmin', restricciones ,controladorUsers.homeAdministration);
 
 
  

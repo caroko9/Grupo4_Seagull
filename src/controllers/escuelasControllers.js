@@ -23,7 +23,7 @@ const controller = {
 
   creaEscuelaAdmin: async (req, res) => {
     try {
-      // Procesa los datos del formulario de creación de escuela desde la vista de administrador
+
       const escuelaNueva = req.body;
       const escuelaimgUpload = req.files;
 
@@ -34,7 +34,7 @@ const controller = {
       const primeraImagen = escuelaimgUpload[0].filename;
       const imagenCloudinaryURL = `https://res.cloudinary.com/djpb4ilrq/image/upload/${primeraImagen}`;
 
-      // Crea la escuela en la base de datos
+     
       const nuevaEscuela = await db.escuela.create({
         nombre: escuelaNueva.nombre,
         email: escuelaNueva.email,
@@ -43,8 +43,8 @@ const controller = {
         imagen: imagenCloudinaryURL,
       });
 
-      // Redirige a la vista de administrador o la página deseada
-      res.redirect("/escuelas/escuelasList"); // Cambia "/admin" por la URL que corresponda
+      
+      res.redirect("/escuelas/escuelasList"); 
 
     } catch (error) {
       console.error(error);
@@ -61,10 +61,10 @@ const controller = {
         return res.status(404).send("Escuela no encontrada");
       }
   
-      // Elimina la escuela de la base de datos
+  
       await escuela.destroy();
   
-      // Redirige a la página deseada después de la eliminación (por ejemplo, la lista de escuelas)
+     
       res.redirect("/escuelas/escuelasList");
     } catch (error) {
       console.error(error);
@@ -75,13 +75,13 @@ const controller = {
 
   buscarEscuelaPorUbicacion: async (req, res) => {
     try {
-      const ubicacion = req.query.ubicacion; // Obtiene la ubicación de la consulta GET
+      const ubicacion = req.query.ubicacion;
 
 
-      // Realiza una consulta a la base de datos para encontrar escuelas que coincidan con la ubicación
+    
       const escuelasEncontradas = await db.escuela.findAll({
         where: {
-          ubicacion: ubicacion, // Suponiendo que la ubicación se busca por país
+          ubicacion: ubicacion, 
         },
       });
 
@@ -154,7 +154,7 @@ editarEscuela: async (req, res) => {
         return res.status(404).send("Escuela no encontrada");
       }
   
-      // Registros de consola para verificar los datos recibidos
+      
       console.log("ID de la escuela:", escuelaId);
       console.log("Nombre nuevo:", req.body.nombre);
       console.log("Email nuevo:", req.body.email);
@@ -169,7 +169,7 @@ editarEscuela: async (req, res) => {
         const descripcionNueva = req.body.descripcion;
         const paisNuevo = req.body.pais;
   
-        // Realiza la actualización en la base de datos aquí usando los datos anteriores
+        
         await escuela.update({
           nombre: nombreNuevo,
           email: emailNuevo,
@@ -178,10 +178,10 @@ editarEscuela: async (req, res) => {
         });
         
   
-        // Vuelve a consultar la escuela después de la actualización
+        
         const escuelaActualizada = await db.escuela.findByPk(escuelaId);
   
-        // Verifica los cambios en la escuela actualizada
+        
         console.log("Escuela actualizada:", escuelaActualizada);
   
         res.redirect(`/escuelas/escuela-detalle/${escuelaId}`);

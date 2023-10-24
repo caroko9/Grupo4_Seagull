@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const productosController = require ('../controllers/productosControllers');
+const restricciones = require('../../middleware/restricciones');
 
 
 cloudinary.config({ 
@@ -27,7 +28,7 @@ router.get('/productos', productosController.listadoProducto);
 
 router.post('/crearProducto', upload.single('imagen'), productosController.crearProducto);
 
-router.get('/crearProducto', productosController.formularioCrearProducto);
+router.get('/crearProducto', restricciones, productosController.formularioCrearProducto);
 
 router.get('/idProducto/:id', productosController.idProducto);
 
