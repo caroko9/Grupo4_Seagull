@@ -14,6 +14,7 @@ const controller = {
       res.status(500).send(`Error al crear la escuela: ${error.message}`);
     }
   },
+  
 
   escuelaAdminVista: async (req, res) => {
     res.render("creaEscuelaAdmin");
