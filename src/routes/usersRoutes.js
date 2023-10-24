@@ -33,12 +33,6 @@ router.get('/register', guestMiddleWare, controladorUsers.register);
 
 router.post('/register', usuarioimgUpload.single('imagenPerfil'),  controladorUsers.createUser);
 
-router.get('/quienesSomos', controladorUsers.quienesSomos )
-
-router.get('/tipsParaTusViajes', controladorUsers.tipsParaTusViajes)
-
-router.get('/historia', controladorUsers.historiaSurf)
-
 router.get('/login', guestMiddleWare, controladorUsers.iniciarSesion);
 
 router.post('/login', guestMiddleWare ,validations, controladorUsers.processLogin);  
@@ -48,6 +42,15 @@ router.get('/perfil/:userId', controladorUsers.obtenerUsuario);
 router.get('/perfil/:userId' , controladorUsers.perfil);
 
 router.get('/homeAdmin', restricciones ,controladorUsers.homeAdministration);
+
+router.get('/quienesSomos', controladorUsers.quienesSomos )
+
+router.get('/tipsParaTusViajes', controladorUsers.tipsParaTusViajes)
+
+router.get('/historia', controladorUsers.historiaSurf)
+
+router.get('/tipsParaTuRendimiento', controladorUsers.tipsParaTuRendimiento)
+
 
 
  

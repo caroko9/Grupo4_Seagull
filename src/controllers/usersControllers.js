@@ -48,6 +48,9 @@ const controladorUsuario = {
   historiaSurf:(req, res) => {
     res.render("historia")
   },
+  tipsParaTuRendimiento:(req, res) => {
+    res.render("tipsParaTuRendimiento")
+  },
 
   iniciarSesion: (req, res) => {
     res.render("login");
