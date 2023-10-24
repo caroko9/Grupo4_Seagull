@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   
       if (!valid) {
-        event.preventDefault(); // Evita el envío del formulario si hay errores de validación.
+        event.preventDefault(); 
       }
     });
   
