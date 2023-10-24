@@ -16,17 +16,20 @@ h2{
  
 .contenedor{
 background-color: #b9e6fc59;
-border: 3px solid #49abd8;
+border: 3px solid #3a3c3d;
 padding: 20px;
 margin-bottom: 20px;
 display: inline-block; 
 vertical-align: top;
-border-radius: 12px;
+border-radius: 5px;
+margin: 10px;
+
 }
 
 .boton{
   font-family: "Roboto Mono";
   font-size: 12px;
+  text-decoration: none;
 }
 
 @media (min-width: 769px) {

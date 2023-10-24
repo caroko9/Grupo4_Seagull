@@ -21,15 +21,17 @@ const storage = new CloudinaryStorage({
     transformation: [{ width: 500, height: 500, crop: 'limit' }], 
   },
 });
-
 const upload = multer({ storage: storage });
 
 router.get('/escuelascreate', escuelasController.sumaEscuela);
 
 router.post('/escuelascreate', upload.array('imagen'), escuelasController.creaEscuela);
 
-router.get('/escuelasList', escuelasController.list);
+router.get('/creaEscuelaAdmin', escuelasController.escuelaAdminVista);
 
+router.post('/creaEscuelaAdmin', upload.array('imagen'), escuelasController.creaEscuelaAdmin);
+
+router.get('/escuelasList', escuelasController.list);
 
 router.get('/escuela-detalle/:id', escuelasController.idEscuela);
 
@@ -39,12 +41,9 @@ router.get('/gestion_escuela', escuelasController.gestionEscuela);
 
 router.get('/editarEscuela/:id', escuelasController.editarEscuela);
 
-
 router.get('/escuelasResults', escuelasController.buscarEscuelaPorUbicacion);
 
-
 router.post ('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);
-
 
 module.exports = router;
 

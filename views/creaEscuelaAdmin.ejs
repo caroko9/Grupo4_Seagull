@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CREACION DE ESCUELAS</title>
+  <link rel="stylesheet" href="/css/escuelas.css">
+</head>
+<body>
+  <%- include ('partials/head.ejs') %>
+  <%- include ('partials/header.ejs') %>
+  <div class="contenedor-celeste">
+    <h2 class="titulo">CREACION DE ESCUELAS</h2>
+    <form action="/escuelas/creaEscuelaAdmin" method="POST" enctype="multipart/form-data" class="formularioo" name="escuelaCreada">
+     
+        <div class="input-1">
+        <div class="inputF">
+          <br>
+         
+          <label for="nombre" class="nombre-input">Nombre de la escuela</label>
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del emprendimiento">
+          <br>
+          
+          <label for="email" class="nombre-input">Email</label>
+          <input type="email" class="form-control" name="email" id="email" >
+        
+        </div>
+       
+        <div class="espaciador"></div>
+        <div class="inputF">
+       
+          <label for="descripcion" class="nombre-input">Describí tu emprendimiento</label>
+          <textarea class="form-control" name="descripcion" id="descripcion" ></textarea>
+       
+        </div>
+     
+        </div>
+        <div class="contenedor-archivos">
+        <div class="mb-3">
+     
+          <label for="imagen" class="nombre-input">Carga hasta tres fotos</label>
+          <input class="form-control" type="file" name="imagen" id="imagen" >
+        
+        </div>
+        </div>
+        <div class="input-2">
+        
+          <label for="pais" class="nombre-input">Pais</label>
+          <input class="form-control" list="datalistOptions" name="pais" id="pais" >
+        
+          <datalist id="datalistOptions">
+        
+            <option value="Argentina">Argentina</option>
+          
+          </datalist>
+       
+          <br>
+        <input type="submit" value="Enviar" class="boton-submit">
+      </div>
+    </form>
+    <script src="/js/validaciones2.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.dropdown-toggle').on('click', function() {
+          // Cierra todos los menús desplegables
+          $('.dropdown-menu').removeClass('show');
+          // Abre el menú desplegable asociado al botón que se hizo clic
+          $(this).next('.dropdown-menu').toggleClass('show');
+        });
+      });
+    </script>
+  </div>
+</body>
+</html>
