@@ -1,4 +1,3 @@
-// Asumiendo que tu controlador está en el mismo nivel que la carpeta public
 const db = require('../database/models'); 
 const { producto } = require('../database/models');
 

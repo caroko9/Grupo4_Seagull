@@ -36,9 +36,7 @@
     <script>
         $(document).ready(function() {
           $('.dropdown-toggle').on('click', function() {
-            // Cierra todos los menús desplegables
             $('.dropdown-menu').removeClass('show');
-            // Abre el menú desplegable asociado al botón que se hizo clic
             $(this).next('.dropdown-menu').toggleClass('show');
           });
         });

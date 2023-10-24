@@ -9,7 +9,6 @@ body {
   margin: 0;
 }
 
-/* Estilos por defecto */
 .titulo {
   font-family: 'Klee One';
   font-size: 24px;
@@ -28,24 +27,23 @@ body {
   text-decoration: underline;
 }
 
-/* Estilos para los productos en el carrito */
 .producto-en-carrito {
   display: flex;
-  flex-direction: column; /* Aplicar Flexbox en dirección de columna */
-  align-items: center; /* Centrar horizontalmente */
-  text-align: center; /* Alinear el texto al centro */
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
   margin-bottom: 20px;
 }
 
 .producto-en-carrito img {
-  max-width: 400px; /* Tamaño máximo de la imagen */
-  max-height: 330px; /* Tamaño máximo de la imagen */
+  max-width: 400px; 
+  max-height: 330px; 
   border-radius: 7px;
 
 }
 
 .producto-en-carrito h4 {
-  margin: 10px 0; /* Agregar un espacio entre la imagen y el nombre */
+  margin: 10px 0; 
   font-size: 18px;
 }
 
@@ -81,7 +79,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px auto; /* Ajusta este valor para controlar la separación vertical */
+  margin: 10px auto;
   background-color: rgba(62, 135, 145, 0.459);
   border-radius: 9px;
   font-family: "Roboto Mono";
@@ -99,7 +97,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px auto; /* Ajusta este valor para controlar la separación vertical */
+  margin: 10px auto; 
   background-color: rgba(62, 135, 145, 0.459);
   border-radius: 9px;
   font-family: "Roboto Mono";

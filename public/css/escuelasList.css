@@ -6,7 +6,6 @@
   font-style: bold;
     }
 
-/* CUADRO DE BÚSQUEDA DE PRODUCTO */
 .search input[type="search"] {
   font-family: 'Klee One', cursive;
   font-size: 12px;
@@ -24,7 +23,6 @@
   width: 30em;
 }
 
-/*BODY Y CONTENEDOR */
 body {
   margin: 0;
   padding: 0;
@@ -41,7 +39,7 @@ body::before {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  opacity: 0.5; /* Ajusta la opacidad deseada */
+  opacity: 0.5; 
   z-index: -1;
   background-position: center top;
 }
@@ -53,7 +51,6 @@ body::before {
   padding: 20px;
 }
 
-/* PRODUCTOS */
 .contenedor {
   display: flex;
   flex-wrap: wrap;
@@ -125,10 +122,10 @@ body::before {
 .escuelas-contenedor {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Alinea las escuelas en filas */
+  justify-content: space-between; 
   gap: 20px;
-  max-width: 1000px; /* Establece un ancho máximo para el contenedor */
-  margin: 0 auto; /* Centra el contenedor en la página */
+  max-width: 1000px; 
+  margin: 0 auto; 
 }
 
 

@@ -6,7 +6,6 @@
     font-style: bold;
       }
 
-/* CUADRO DE BÚSQUEDA DE PRODUCTO */
 .search input[type="search"] {
     font-family: 'Klee One', cursive;
     font-size: 12px;
@@ -24,7 +23,6 @@
     width: 30em;
 }
 
-/*BODY Y CONTENEDOR */
 body {
     margin: 0;
     padding: 0;
