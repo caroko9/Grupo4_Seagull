@@ -49,8 +49,12 @@
       <div class="contenedor_boton">
         <a href="/escuelas/editarEscuela/<%= escuela.id %>" class="Boton_editar">EDITAR ESCUELA</a>
       </div>
-        
-              
+
+      <form class="contenedor_boton2" action="/escuelas/escuelaAdmin/<%= escuela.id %>?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit"  class="boton_eliminar">ELIMINAR ESCUELA</button>
+      </form>
+
        </main>
        <script>
         $(document).ready(function() {

@@ -105,6 +105,27 @@ p{
   margin-left: 880px;
   margin-top: 350px;
   }
+.contenedor_boton2{
+  margin-left: 880px;
+  margin-top: 30px;
+}
+.boton_eliminar{
+  background-color: rgba(255, 255, 255, 0.466);
+  border: 5px solid #afe3f5a6;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+  width: 400px;
+  height: 35px;
+  font-family: "Klee One";
+  text-decoration: none;
+  color: #165A7A !important;
+  font-size: 20px !important;
+
+}
 
 .Boton_editar{
   background-color: rgba(255, 255, 255, 0.466);

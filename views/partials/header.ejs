@@ -17,7 +17,11 @@
                 <img class= "icono-tabla" src="\img\iconografia\surf.png" alt="Icono Escuela">
               </a>
               <ul class="dropdown-menu" aria-labelledby="iconoDropdown">
-                <li><a class="dropdown-item" href="/escuelas/escuelasList">Escuelas</a></li>
+                <li><a class="dropdown-item" href="/escuelas/escuelasList">Escuelas</a>
+                  <% if (usuarioLogueado) { %>
+                    <li><a class="dropdown-item" href="/users/homeAdmin">Home Admin</a></li>
+                  <% } %></li>
+                
                </ul>
   
           
@@ -62,6 +66,9 @@
               <li><a class="dropdown-item" href="/productos/carrito">Mi carrito</a></li>
              </ul>
         </ul>
+
+
+
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

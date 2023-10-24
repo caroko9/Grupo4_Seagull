@@ -51,6 +51,27 @@ const controller = {
     }
   },
 
+  eliminarEscuela: async (req, res) => {
+    try {
+      const escuelaId = req.params.id;
+      const escuela = await db.escuela.findByPk(escuelaId);
+  
+      if (!escuela) {
+        return res.status(404).send("Escuela no encontrada");
+      }
+  
+      // Elimina la escuela de la base de datos
+      await escuela.destroy();
+  
+      // Redirige a la página deseada después de la eliminación (por ejemplo, la lista de escuelas)
+      res.redirect("/escuelas/escuelasList");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al eliminar la escuela');
+    }
+  },
+  
+
   buscarEscuelaPorUbicacion: async (req, res) => {
     try {
       const ubicacion = req.query.ubicacion; // Obtiene la ubicación de la consulta GET
@@ -141,7 +162,7 @@ editarEscuela: async (req, res) => {
   
       if (req.method === "GET") {
         res.render("editarEscuela", { escuela });
-      } else if (req.method === "POST") {
+      } else if (req.method === "PUT") {
         const nombreNuevo = req.body.nombre;
         const emailNuevo = req.body.email;
         const descripcionNueva = req.body.descripcion;
@@ -154,6 +175,7 @@ editarEscuela: async (req, res) => {
           descripcion: descripcionNueva,
           pais: paisNuevo,
         });
+        
   
         // Vuelve a consultar la escuela después de la actualización
         const escuelaActualizada = await db.escuela.findByPk(escuelaId);

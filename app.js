@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('./src/database/models'); 
-
+const userMiddleware = require('./middleware/userMiddleware'); // Requiere el middleware
 
 
 const productosRoutes = require('./src/routes/productosRoutes');
@@ -39,12 +39,15 @@ db.sequelize.sync()
     console.error('Error al sincronizar las tablas:', error);
   });
 
+  app.use(userMiddleware);
 
 app.use ('/productos', productosRoutes);
 app.use ('/users', usersRoutes); 
 app.use ('/', mainRoutes);
 app.use ('/escuelas', escuelasRoutes);
 app.use ('/api', apiRoutes);
+
+
 
 app.use ('*', function (req, res){
   res.send("ruta erronea")

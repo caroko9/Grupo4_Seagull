@@ -37,13 +37,17 @@ router.get('/escuela-detalle/:id', escuelasController.idEscuela);
 
 router.get('/escuelaAdmin/:id', escuelasController.escuelaAdmin);
 
+router.delete ('/escuelaAdmin/:id', escuelasController.eliminarEscuela)
+
 router.get('/gestion_escuela', escuelasController.gestionEscuela);
 
 router.get('/editarEscuela/:id', escuelasController.editarEscuela);
 
 router.get('/escuelasResults', escuelasController.buscarEscuelaPorUbicacion);
 
-router.post ('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);
+router.put('/editarEscuela/:id', upload.array('imagen'), escuelasController.editarEscuela);
+
+
 
 module.exports = router;
 
